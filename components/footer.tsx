@@ -40,13 +40,13 @@ export function Footer() {
             </p>
             <Link
               href="/#what-we-do"
-              className="text-[15px] leading-6 text-[var(--color-text-on-brand-soft)] hover:underline"
+              className="link-hover text-[15px] leading-6 text-[var(--color-text-on-brand-soft)] hover:underline"
             >
               What we do
             </Link>
             <Link
               href="/about"
-              className="text-[15px] font-medium leading-6 text-[var(--color-text-on-brand-soft)] hover:underline"
+              className="link-hover text-[15px] font-medium leading-6 text-[var(--color-text-on-brand-soft)] hover:underline"
             >
               About
             </Link>
@@ -58,7 +58,7 @@ export function Footer() {
             </p>
             <Link
               href="#contact"
-              className="text-[15px] font-medium leading-6 text-[var(--color-text-on-brand-soft)] hover:underline"
+              className="link-hover text-[15px] font-medium leading-6 text-[var(--color-text-on-brand-soft)] hover:underline"
             >
               Contact
             </Link>

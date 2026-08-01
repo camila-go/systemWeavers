@@ -206,3 +206,8 @@ export const whyParagraphs = [
 
 export const aboutHeroBody =
   "System Weavers Collaborative Consulting partners with public health organizations, communities, and researchers to co-design and transform health systems through inclusive engagement, equity-centered policies, and intentional design.";
+
+export const atAGlance = {
+  naics: "NAICS 541820",
+  certifications: "WOSB · DC CBE certified",
+};

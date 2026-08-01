@@ -1,115 +1,75 @@
-"use client";
-
 import Image from "next/image";
-import { useState } from "react";
 import { aboutHeroBody, services } from "@/lib/content";
 import { Selvage } from "@/components/selvage";
 import { ContactForm } from "@/components/contact-form";
 import { Icon } from "@/components/ui/icon";
+import { Reveal, RevealText } from "@/components/motion/reveal";
 
 export function AboutPage() {
-  const [openIndex, setOpenIndex] = useState(0);
-
   return (
     <>
+      {/* Hero */}
       <section className="relative isolate overflow-hidden">
-        <div className="absolute inset-0 -z-10">
+        <div className="absolute inset-0 -z-10 bg-[var(--navy-800)]">
           <Image
             src="/images/about-hero.png"
             alt=""
             fill
             priority
-            className="object-cover"
+            className="object-cover opacity-[0.12] transition-opacity duration-700"
             sizes="100vw"
           />
-          <div className="absolute inset-0 bg-[var(--navy-900)]/75" />
         </div>
-        <div className="mx-auto flex w-full max-w-[1090px] flex-col items-center gap-6 px-4 py-16 text-center md:px-8 md:py-24 xl:px-0">
-          <h1 className="font-[family-name:var(--font-fraunces)] text-4xl font-bold leading-tight text-white md:text-5xl md:leading-[64px] xl:text-6xl xl:leading-[72px]">
+        <div className="mx-auto flex w-full max-w-[1090px] flex-col items-center gap-5 px-6 py-16 text-center md:gap-6 md:px-10 md:py-24 xl:px-0 xl:py-24">
+          <h1 className="hero-enter hero-enter-1 font-[family-name:var(--font-fraunces)] text-[40px] font-bold leading-tight text-white md:text-5xl md:leading-[64px] xl:text-[64px] xl:leading-[72px]">
             About us
           </h1>
-          <p className="max-w-3xl text-base leading-7 text-[var(--navy-100)] md:text-lg">
+          <p className="hero-enter hero-enter-2 max-w-3xl text-base leading-7 text-[var(--navy-100)] md:text-lg md:leading-7">
             {aboutHeroBody}
           </p>
         </div>
-        <Selvage equal />
+        <Selvage />
       </section>
 
-      <section className="bg-[var(--color-bg-page)] px-4 py-14 sm:px-6 md:px-10 md:py-16 lg:px-16 lg:py-20 xl:px-20 xl:py-24">
-        <div className="mx-auto flex w-full max-w-6xl flex-col items-start gap-10 xl:max-w-[1440px] xl:flex-row xl:gap-16">
-          <div className="flex min-w-0 w-full flex-1 flex-col gap-6">
-            <h2 className="font-[family-name:var(--font-fraunces)] text-3xl font-semibold leading-tight text-[var(--color-text-primary)] md:text-4xl md:leading-[50px]">
+      {/* Our services */}
+      <section className="bg-[var(--color-bg-page)] px-6 py-12 md:px-10 md:py-16 xl:px-20 xl:py-28 2xl:px-[240px]">
+        <div className="mx-auto flex w-full max-w-[1440px] flex-col gap-6">
+          <RevealText>
+            <h2 className="font-[family-name:var(--font-fraunces)] text-[34px] font-semibold leading-[44px] text-[var(--color-text-primary)] md:text-[40px] md:leading-[50px]">
               Our services
             </h2>
+          </RevealText>
 
-            <div className="flex w-full flex-col">
-              {services.map((service, index) => {
-                const open = openIndex === index;
-                const panelId = `service-panel-${index}`;
-                const buttonId = `service-button-${index}`;
+          <div className="flex w-full flex-col">
+            {services.map((service, index) => (
+              <Reveal key={service.title} delay={index * 60}>
+                <details className="service-accordion group flex flex-col gap-3 border-b border-[var(--color-border-default)] py-6">
+                  <summary className="flex w-full cursor-pointer list-none items-center gap-4 text-left [&::-webkit-details-marker]:hidden">
+                    <span className="text-rise flex-1 text-[22px] font-semibold leading-[30px] text-[var(--color-text-primary)] md:font-[family-name:var(--font-fraunces)]">
+                      {service.title}
+                    </span>
+                    <Icon
+                      name="Plus"
+                      className="accordion-icon size-5 shrink-0 text-[var(--teal-500)] group-open:hidden"
+                    />
+                    <Icon
+                      name="Minus"
+                      className="accordion-icon accordion-icon-minus hidden size-5 shrink-0 text-[var(--teal-500)] group-open:block"
+                    />
+                  </summary>
 
-                return (
-                  <div
-                    key={service.title}
-                    className="flex flex-col gap-3 border-b border-[var(--color-border-default)] py-6"
-                  >
-                    <button
-                      type="button"
-                      id={buttonId}
-                      className="flex w-full items-center gap-4 text-left"
-                      aria-expanded={open}
-                      aria-controls={panelId}
-                      onClick={() => setOpenIndex(open ? -1 : index)}
-                    >
-                      <span className="flex-1 text-lg font-semibold leading-8 text-[var(--color-text-primary)] sm:text-xl">
-                        {service.title}
-                      </span>
-                      <Icon
-                        name={open ? "Minus" : "Plus"}
-                        className="size-5 shrink-0 text-[#0e7490]"
-                      />
-                    </button>
-
-                    {open ? (
-                      <div
-                        id={panelId}
-                        role="region"
-                        aria-labelledby={buttonId}
-                        className="text-base font-normal leading-6 text-[var(--color-text-muted)]"
-                      >
-                        {service.intro ? (
-                          <>
-                            <span>{service.intro}</span>
-                            <br />
-                          </>
-                        ) : null}
-                        {service.items.map((item, i) => (
-                          <span key={item}>
-                            {item}
-                            {i < service.items.length - 1 ? <br /> : null}
-                          </span>
-                        ))}
-                      </div>
-                    ) : null}
+                  <div className="accordion-panel text-base leading-[26px] text-[var(--color-text-muted)]">
+                    {service.intro ? <p className="mb-2">{service.intro}</p> : null}
+                    <ul className="list-disc space-y-0 pl-6">
+                      {service.items.map((item) => (
+                        <li key={item}>{item}</li>
+                      ))}
+                    </ul>
                   </div>
-                );
-              })}
-            </div>
+                </details>
+              </Reveal>
+            ))}
           </div>
-
-          <aside className="flex w-full shrink-0 flex-col gap-5 rounded-2xl bg-[var(--color-bg-tint)] p-6 md:p-8 xl:w-96">
-            <h3 className="font-[family-name:var(--font-fraunces)] text-xl font-semibold leading-8 text-[var(--color-text-primary)]">
-              At a glance
-            </h3>
-            <a
-              href="#"
-              className="inline-flex items-center gap-1.5 text-base font-semibold leading-5 text-[var(--color-text-primary)] hover:underline"
-              onClick={(e) => e.preventDefault()}
-            >
-              Download capability statement (PDF)
-              <Icon name="ArrowUpRight" className="size-4 text-[#0e7490]" />
-            </a>
-          </aside>
         </div>
       </section>
 

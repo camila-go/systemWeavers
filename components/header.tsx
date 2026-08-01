@@ -1,104 +1,181 @@
 "use client";
 
-import { Menu } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { site } from "@/lib/content";
 import { Button } from "@/components/ui/button";
 import { Selvage } from "@/components/selvage";
 
+function MenuIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      aria-hidden
+    >
+      <path d="M4 5h16M4 12h16M4 19h16" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+function LanguageToggle() {
+  return (
+    <div
+      className="flex shrink-0 items-center gap-[5px] rounded-full border border-[var(--color-border-default)] px-2.5 py-[5px] text-sm transition-colors duration-200 hover:border-[var(--teal-500)]"
+      aria-label="Language"
+    >
+      <span className="font-semibold leading-[18px] text-[var(--color-text-primary)]">
+        EN
+      </span>
+      <span className="text-[var(--color-text-muted)]" aria-hidden>
+        ·
+      </span>
+      <span
+        className="leading-[22px] text-[var(--color-text-muted)]"
+        title="Spanish coming soon"
+      >
+        ES
+      </span>
+    </div>
+  );
+}
+
+function LogoLink({ showTagline = false }: { showTagline?: boolean }) {
+  return (
+    <Link
+      href="/"
+      className="min-w-0 shrink transition-opacity duration-200 hover:opacity-80"
+    >
+      <span className="whitespace-nowrap font-[family-name:var(--font-fraunces)] text-xl font-semibold text-[var(--color-text-brand)] md:text-2xl">
+        {site.name}
+      </span>
+      {showTagline ? (
+        <span className="mt-0.5 block text-[10px] font-medium tracking-[1.8px] text-[var(--color-text-primary)] md:text-[11px]">
+          {site.tagline}
+        </span>
+      ) : null}
+    </Link>
+  );
+}
+
+function PrimaryNavLinks({ aboutActive }: { aboutActive: boolean }) {
+  return (
+    <>
+      <Link
+        href="/#what-we-do"
+        className="nav-link text-base font-bold text-[var(--color-text-primary)]"
+      >
+        What we do
+      </Link>
+      <Link
+        href="/about"
+        className={`nav-link text-base text-[var(--color-text-primary)] ${
+          aboutActive ? "nav-link-active font-bold" : "font-medium"
+        }`}
+      >
+        About
+      </Link>
+    </>
+  );
+}
+
 export function Header() {
   const pathname = usePathname();
-  const [open, setOpen] = useState(false);
+  const menuToggleRef = useRef<HTMLInputElement>(null);
+  const [scrolled, setScrolled] = useState(false);
   const aboutActive = pathname.startsWith("/about");
+  const homeActive = pathname === "/";
+
+  useEffect(() => {
+    if (menuToggleRef.current) {
+      menuToggleRef.current.checked = false;
+    }
+  }, [pathname]);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  const closeMenu = () => {
+    if (menuToggleRef.current) {
+      menuToggleRef.current.checked = false;
+    }
+  };
+
+  const mobileLinkClass = (active: boolean) =>
+    `nav-link text-base text-[var(--color-text-primary)] ${
+      active ? "nav-link-active font-bold" : "font-medium"
+    }`;
 
   return (
-    <header className="sticky top-0 z-50 bg-white">
-      <div className="mx-auto flex w-full max-w-[1440px] items-center justify-between gap-3 px-5 py-4 md:gap-4 md:px-8 md:py-5 xl:px-16">
-        <Link href="/" className="min-w-0 shrink" onClick={() => setOpen(false)}>
-          <span className="font-[family-name:var(--font-fraunces)] text-xl font-semibold text-[var(--color-text-brand)] md:text-2xl">
-            {site.name}
-          </span>
-          <span className="mt-0.5 hidden text-[10px] font-medium tracking-[1.8px] text-[var(--color-text-primary)] md:block md:text-[11px]">
-            {site.tagline}
-          </span>
-        </Link>
+    <header
+      className={`sticky top-0 z-50 bg-white/95 backdrop-blur-sm transition-shadow duration-300 ${
+        scrolled ? "header-scrolled" : ""
+      }`}
+    >
+      <div className="mx-auto w-full max-w-[1440px] px-5 py-4 md:px-8 md:py-5 xl:px-16">
+        {/* Mobile: CSS checkbox toggle — works even if React hydration is delayed */}
+        <div className="relative z-10 md:hidden">
+          <input
+            ref={menuToggleRef}
+            id="mobile-nav-toggle"
+            type="checkbox"
+            className="peer sr-only"
+          />
 
-        <div className="flex items-center gap-2.5 md:gap-4">
-          <nav className="hidden items-center gap-9 md:flex" aria-label="Primary">
-            <Link
-              href="/#what-we-do"
-              className="text-base font-bold text-[var(--color-text-primary)]"
+          <div className="flex items-center justify-between gap-2">
+            <LogoLink />
+            <LanguageToggle />
+            <label
+              htmlFor="mobile-nav-toggle"
+              className="inline-flex size-11 shrink-0 cursor-pointer touch-manipulation items-center justify-center rounded-md transition-colors duration-200 hover:bg-[var(--green-50)] active:scale-95"
             >
-              What we do
+              <span className="sr-only">Toggle menu</span>
+              <MenuIcon className="size-7 text-[var(--color-text-primary)]" />
+            </label>
+          </div>
+
+          <nav
+            id="mobile-nav"
+            className="mt-4 hidden flex-col gap-4 border-t border-[var(--color-border-default)] pt-4 peer-checked:flex"
+            aria-label="Mobile"
+          >
+            <Link href="/" onClick={closeMenu} className={mobileLinkClass(homeActive)}>
+              Home
             </Link>
             <Link
               href="/about"
-              className={`text-base text-[var(--color-text-primary)] ${
-                aboutActive ? "font-bold underline underline-offset-4" : "font-medium"
-              }`}
+              onClick={closeMenu}
+              className={mobileLinkClass(aboutActive)}
             >
               About
             </Link>
+            <Button href="#contact" className="w-full" onClick={closeMenu}>
+              Contact Us
+            </Button>
           </nav>
+        </div>
 
-          <div
-            className="flex items-center gap-[5px] rounded-full border border-[var(--color-border-default)] px-2.5 py-[5px] text-sm"
-            aria-label="Language"
-          >
-            <span className="font-semibold leading-[18px] text-[var(--color-text-primary)]">
-              EN
-            </span>
-            <span className="text-[var(--color-text-muted)]" aria-hidden>
-              ·
-            </span>
-            <span
-              className="leading-[22px] text-[var(--color-text-muted)]"
-              title="Spanish coming soon"
-            >
-              ES
-            </span>
+        {/* Tablet/desktop */}
+        <div className="hidden items-center justify-between gap-4 md:flex">
+          <LogoLink showTagline />
+          <div className="flex items-center gap-7 lg:gap-9">
+            <nav className="flex items-center gap-7 lg:gap-9" aria-label="Primary">
+              <PrimaryNavLinks aboutActive={aboutActive} />
+            </nav>
+            <LanguageToggle />
+            <Button href="#contact">Contact Us</Button>
           </div>
-
-          <Button href="#contact" className="hidden lg:inline-flex">
-            Contact Us
-          </Button>
-
-          <button
-            type="button"
-            className="inline-flex size-7 items-center justify-center md:size-11 md:rounded-[var(--radius-md)] md:border md:border-[var(--color-border-default)] lg:hidden"
-            aria-expanded={open}
-            aria-controls="mobile-nav"
-            onClick={() => setOpen((v) => !v)}
-          >
-            <span className="sr-only">Menu</span>
-            <Menu className="size-7 text-[var(--color-text-primary)] md:size-5" aria-hidden />
-          </button>
         </div>
       </div>
 
-      {open ? (
-        <nav
-          id="mobile-nav"
-          className="border-t border-[var(--color-border-default)] px-5 py-4 lg:hidden"
-          aria-label="Mobile"
-        >
-          <div className="flex flex-col gap-4">
-            <Link href="/#what-we-do" onClick={() => setOpen(false)} className="font-bold">
-              What we do
-            </Link>
-            <Link href="/about" onClick={() => setOpen(false)} className="font-medium">
-              About
-            </Link>
-            <Button href="#contact" className="w-full" onClick={() => setOpen(false)}>
-              Contact Us
-            </Button>
-          </div>
-        </nav>
-      ) : null}
-
-      {/* Selvage sits under the sticky header from tablet up; on mobile it follows the hero */}
       <Selvage className="hidden md:flex" />
     </header>
   );

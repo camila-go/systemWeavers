@@ -4,6 +4,7 @@ import { FormEvent, useState } from "react";
 import { site } from "@/lib/content";
 import { Button } from "@/components/ui/button";
 import { TextInput, TextTextarea } from "@/components/ui/input";
+import { Reveal, RevealText } from "@/components/motion/reveal";
 
 type FieldErrors = Partial<
   Record<"fullName" | "email" | "message" | "form", string>
@@ -63,10 +64,10 @@ export function ContactForm() {
   return (
     <section
       id="contact"
-      className="scroll-mt-24 bg-[var(--color-bg-page)] px-6 py-12 md:px-12 md:py-16 lg:px-16 lg:py-20 xl:px-20 xl:py-24 2xl:px-[120px] 2xl:py-28"
+      className="scroll-mt-24 bg-[var(--color-bg-page)] px-6 py-12 md:px-10 md:py-16 xl:px-20 xl:py-28 2xl:px-[240px]"
     >
-      <div className="mx-auto grid w-full max-w-[1440px] grid-cols-1 gap-5 lg:grid-cols-2 lg:items-start lg:gap-16 2xl:gap-20">
-        <div className="flex flex-col gap-5">
+      <div className="mx-auto grid w-full max-w-[1440px] grid-cols-1 gap-8 xl:grid-cols-[1fr_560px] xl:items-start xl:gap-20">
+        <RevealText className="flex flex-col gap-5">
           <h2 className="font-[family-name:var(--font-fraunces)] text-[28px] font-semibold leading-9 text-[var(--color-text-primary)] md:text-[34px] md:leading-[44px] xl:text-[40px] xl:leading-[50px]">
             Start a conversation
           </h2>
@@ -76,23 +77,30 @@ export function ContactForm() {
               Tell us about your goals and we’ll respond within two business days.
             </p>
             <p className="lg:hidden">
-              <a className="hover:underline" href={`tel:${site.phone.replace(/\D/g, "")}`}>
+              <a
+                className="link-hover transition-colors hover:underline"
+                href={`tel:${site.phone.replace(/\D/g, "")}`}
+              >
                 {site.phone}
               </a>
               {" · "}
-              <a className="hover:underline" href={`mailto:${site.email}`}>
+              <a
+                className="link-hover transition-colors hover:underline"
+                href={`mailto:${site.email}`}
+              >
                 {site.email}
               </a>
             </p>
           </div>
-        </div>
+        </RevealText>
 
-        <form
-          onSubmit={onSubmit}
-          noValidate
-          className="flex w-full flex-col gap-4 rounded-2xl border border-[var(--color-border-default)] bg-[var(--color-bg-page)] px-5 py-6 md:gap-5 md:p-10 lg:max-w-[560px] lg:justify-self-end"
-          aria-busy={status === "loading"}
-        >
+        <Reveal delay={120}>
+          <form
+            onSubmit={onSubmit}
+            noValidate
+            className="form-card flex w-full flex-col gap-4 rounded-2xl border border-[var(--color-border-default)] bg-[var(--color-bg-page)] p-6 md:gap-5 md:p-10 xl:w-[560px] xl:shrink-0 xl:justify-self-end"
+            aria-busy={status === "loading"}
+          >
           <TextInput
             id="fullName"
             name="fullName"
@@ -118,7 +126,7 @@ export function ContactForm() {
             id="message"
             name="message"
             label="How can we help? (required)"
-            placeholder="Tell us about your goal…"
+            placeholder="Tell us a bit about your project or policy goal…"
             required
             rows={4}
             error={errors.message}
@@ -151,7 +159,8 @@ export function ContactForm() {
           >
             {statusMessage}
           </p>
-        </form>
+          </form>
+        </Reveal>
       </div>
     </section>
   );

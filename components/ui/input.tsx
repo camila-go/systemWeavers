@@ -27,7 +27,7 @@ export function TextInput({
         id={id}
         aria-invalid={error ? true : undefined}
         aria-describedby={describedBy}
-        className={`min-h-11 w-full rounded-[var(--radius-md)] border-[1.5px] bg-white px-4 py-3.5 text-base leading-[26px] text-[var(--color-text-primary)] placeholder:text-[var(--color-text-muted)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-focus)] focus-visible:ring-offset-4 focus-visible:ring-offset-white ${
+        className={`field-input min-h-11 w-full rounded-[var(--radius-md)] border-[1.5px] bg-white px-4 py-3.5 text-base leading-[26px] text-[var(--color-text-primary)] placeholder:text-[var(--color-text-muted)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-focus)] focus-visible:ring-offset-4 focus-visible:ring-offset-white ${
           error
             ? "border-[var(--color-error)]"
             : "border-[var(--color-border-default)]"
@@ -64,7 +64,7 @@ export function TextTextarea({
         id={id}
         aria-invalid={error ? true : undefined}
         aria-describedby={describedBy}
-        className={`min-h-28 w-full resize-y rounded-[var(--radius-md)] border-[1.5px] bg-white px-4 py-3.5 text-base leading-[26px] text-[var(--color-text-primary)] placeholder:text-[var(--color-text-muted)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-focus)] focus-visible:ring-offset-4 focus-visible:ring-offset-white ${
+        className={`field-input min-h-28 w-full resize-y rounded-[var(--radius-md)] border-[1.5px] bg-white px-4 py-3.5 text-base leading-[26px] text-[var(--color-text-primary)] placeholder:text-[var(--color-text-muted)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-focus)] focus-visible:ring-offset-4 focus-visible:ring-offset-white ${
           error
             ? "border-[var(--color-error)]"
             : "border-[var(--color-border-default)]"

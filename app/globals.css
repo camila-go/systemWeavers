@@ -77,3 +77,412 @@ body {
   outline: 2px solid var(--color-focus);
   outline-offset: 2px;
 }
+
+/* ── Motion system (professional, subtle) ── */
+
+:root {
+  --motion-duration-fast: 180ms;
+  --motion-duration-base: 280ms;
+  --motion-duration-slow: 560ms;
+  --motion-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --motion-ease-in-out: cubic-bezier(0.45, 0, 0.55, 1);
+  --shadow-hover: 0 8px 24px rgba(40, 62, 107, 0.08);
+  --shadow-card-hover: 0 12px 32px rgba(40, 62, 107, 0.1);
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes nav-slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes accordion-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes icon-pop {
+  from {
+    transform: scale(0.85);
+    opacity: 0.6;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Hero entrance — content stays visible if animation does not run */
+.hero-enter {
+  animation: hero-rise var(--motion-duration-slow) var(--motion-ease-out) both;
+}
+
+.hero-enter-1 { animation-delay: 60ms; }
+.hero-enter-2 { animation-delay: 120ms; }
+.hero-enter-3 { animation-delay: 200ms; }
+.hero-enter-4 { animation-delay: 280ms; }
+.hero-enter-5 { animation-delay: 360ms; }
+
+@keyframes hero-rise {
+  from {
+    opacity: 0.82;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Scroll reveal — visible by default; only offset when JS initializes */
+.reveal {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal.reveal-init {
+  transform: translateY(18px);
+  transition:
+    opacity var(--motion-duration-slow) var(--motion-ease-out),
+    transform var(--motion-duration-slow) var(--motion-ease-out);
+}
+
+.reveal.reveal-init.reveal-visible {
+  transform: translateY(0);
+}
+
+/* Text reveal — no container shift; children fade/rise individually */
+.reveal-text-only {
+  transform: none;
+  opacity: 1;
+}
+
+@keyframes text-rise {
+  from {
+    opacity: 0.72;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes text-overline-in {
+  from {
+    opacity: 0.65;
+    letter-spacing: 0.18em;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    letter-spacing: inherit;
+    transform: translateY(0);
+  }
+}
+
+@keyframes text-emphasis-in {
+  from {
+    opacity: 0.8;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Stagger direct children when text reveal activates */
+.reveal-text-only.reveal-text-init.reveal-visible > * {
+  animation: text-rise var(--motion-duration-slow) var(--motion-ease-out) both;
+}
+
+.reveal-text-only.reveal-text-init.reveal-visible > *:nth-child(1) {
+  animation-delay: var(--text-stagger-offset, 0ms);
+}
+.reveal-text-only.reveal-text-init.reveal-visible > *:nth-child(2) {
+  animation-delay: calc(var(--text-stagger-offset, 0ms) + 70ms);
+}
+.reveal-text-only.reveal-text-init.reveal-visible > *:nth-child(3) {
+  animation-delay: calc(var(--text-stagger-offset, 0ms) + 140ms);
+}
+.reveal-text-only.reveal-text-init.reveal-visible > *:nth-child(4) {
+  animation-delay: calc(var(--text-stagger-offset, 0ms) + 210ms);
+}
+.reveal-text-only.reveal-text-init.reveal-visible > *:nth-child(5) {
+  animation-delay: calc(var(--text-stagger-offset, 0ms) + 280ms);
+}
+.reveal-text-only.reveal-text-init.reveal-visible > *:nth-child(6) {
+  animation-delay: calc(var(--text-stagger-offset, 0ms) + 350ms);
+}
+
+/* Nested text lines inside any revealed block */
+.reveal.reveal-init.reveal-visible .text-rise {
+  animation: text-rise var(--motion-duration-slow) var(--motion-ease-out) both;
+}
+
+.reveal.reveal-init.reveal-visible .text-rise-d1 {
+  animation-delay: calc(var(--text-stagger-offset, 0ms) + 80ms);
+}
+.reveal.reveal-init.reveal-visible .text-rise-d2 {
+  animation-delay: calc(var(--text-stagger-offset, 0ms) + 155ms);
+}
+.reveal.reveal-init.reveal-visible .text-rise-d3 {
+  animation-delay: calc(var(--text-stagger-offset, 0ms) + 230ms);
+}
+
+.reveal.reveal-init.reveal-visible .text-overline {
+  animation: text-overline-in calc(var(--motion-duration-slow) + 80ms) var(--motion-ease-out)
+    both;
+}
+
+.reveal.reveal-init.reveal-visible .text-emphasis {
+  animation: text-emphasis-in calc(var(--motion-duration-slow) + 40ms) var(--motion-ease-out)
+    both;
+}
+
+/* Hero title line split */
+.hero-line {
+  display: inline-block;
+  animation: text-emphasis-in var(--motion-duration-slow) var(--motion-ease-out) both;
+}
+
+.hero-line-2 {
+  animation-delay: 140ms;
+}
+
+/* Capability cards — icon hover only (cards are not clickable) */
+.capability-card .capability-icon {
+  transition: transform var(--motion-duration-base) var(--motion-ease-out);
+}
+
+.capability-card .capability-icon svg {
+  transition: transform var(--motion-duration-base) var(--motion-ease-out);
+}
+
+@media (hover: hover) {
+  .capability-card:hover .capability-icon {
+    transform: scale(1.06) translateY(-2px);
+  }
+
+  .capability-card:hover .capability-icon svg {
+    transform: scale(1.08);
+  }
+}
+
+/* Interactive cards */
+.card-interactive {
+  transition:
+    transform var(--motion-duration-base) var(--motion-ease-out),
+    box-shadow var(--motion-duration-base) var(--motion-ease-out),
+    border-color var(--motion-duration-base) var(--motion-ease-out),
+    background-color var(--motion-duration-base) var(--motion-ease-out);
+}
+
+@media (hover: hover) {
+  .card-interactive:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-card-hover);
+  }
+}
+
+.card-interactive-dark:hover {
+  border-color: rgba(255, 255, 255, 0.28);
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.card-interactive .card-icon {
+  transition: transform var(--motion-duration-base) var(--motion-ease-out);
+}
+
+@media (hover: hover) {
+  .card-interactive:hover .card-icon {
+    transform: scale(1.06);
+  }
+}
+
+/* Nav link underline */
+.nav-link {
+  position: relative;
+  transition: color var(--motion-duration-fast) ease;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 100%;
+  height: 2px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--motion-duration-base) var(--motion-ease-out);
+}
+
+@media (hover: hover) {
+  .nav-link:hover::after {
+    transform: scaleX(1);
+  }
+}
+
+.nav-link-active::after {
+  transform: scaleX(1);
+}
+
+/* Footer / text links */
+.link-hover {
+  transition: color var(--motion-duration-fast) ease, opacity var(--motion-duration-fast) ease;
+}
+
+@media (hover: hover) {
+  .link-hover:hover {
+    color: var(--color-text-on-brand);
+    opacity: 1;
+  }
+}
+
+/* Accordion */
+.service-accordion summary {
+  transition: color var(--motion-duration-fast) ease;
+}
+
+@media (hover: hover) {
+  .service-accordion summary:hover {
+    color: var(--color-text-brand);
+  }
+}
+
+.service-accordion summary .accordion-icon {
+  transition: transform var(--motion-duration-base) var(--motion-ease-out);
+}
+
+.service-accordion[open] summary .accordion-icon-minus {
+  animation: icon-pop var(--motion-duration-base) var(--motion-ease-out);
+}
+
+.service-accordion[open] > .accordion-panel {
+  animation: accordion-reveal var(--motion-duration-base) var(--motion-ease-out);
+}
+
+/* Founder portrait zoom */
+.portrait-zoom img {
+  transition: transform 700ms var(--motion-ease-out);
+}
+
+@media (hover: hover) {
+  .portrait-zoom:hover img {
+    transform: scale(1.04);
+  }
+}
+
+/* Mobile nav open animation */
+.peer:checked ~ #mobile-nav {
+  animation: nav-slide-down var(--motion-duration-base) var(--motion-ease-out);
+}
+
+/* Header scrolled state */
+.header-scrolled {
+  box-shadow: 0 1px 0 rgba(40, 62, 107, 0.06), 0 4px 16px rgba(40, 62, 107, 0.06);
+}
+
+/* Form card */
+.form-card {
+  transition:
+    box-shadow var(--motion-duration-base) var(--motion-ease-out),
+    border-color var(--motion-duration-base) var(--motion-ease-out);
+}
+
+@media (hover: hover) {
+  .form-card:hover {
+    box-shadow: var(--shadow-hover);
+    border-color: var(--green-100);
+  }
+}
+
+/* Input micro-interaction */
+.field-input {
+  transition:
+    border-color var(--motion-duration-fast) ease,
+    box-shadow var(--motion-duration-fast) ease;
+}
+
+@media (hover: hover) {
+  .field-input:not(:focus-visible):not([aria-invalid="true"]):hover {
+    border-color: var(--teal-500);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .reveal,
+  .reveal-init,
+  .reveal-visible,
+  .reveal-text-only,
+  .hero-enter,
+  .hero-line,
+  .text-rise,
+  .text-overline,
+  .text-emphasis {
+    opacity: 1;
+    transform: none;
+    animation: none;
+    letter-spacing: inherit;
+  }
+
+  .capability-card:hover .capability-icon,
+  .capability-card:hover .capability-icon svg {
+    transform: none;
+  }
+
+  .card-interactive:hover,
+  .card-interactive-dark:hover {
+    transform: none;
+  }
+
+  .portrait-zoom:hover img {
+    transform: none;
+  }
+}
