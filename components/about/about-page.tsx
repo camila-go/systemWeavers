@@ -1,14 +1,17 @@
+"use client";
+
 import Image from "next/image";
-import { aboutHeroBody, services } from "@/lib/content";
 import { Selvage } from "@/components/selvage";
 import { ContactForm } from "@/components/contact-form";
 import { Icon } from "@/components/ui/icon";
 import { Reveal, RevealText } from "@/components/motion/reveal";
+import { useContent } from "@/lib/i18n";
 
 export function AboutPage() {
+  const t = useContent();
+
   return (
     <>
-      {/* Hero */}
       <section className="relative isolate overflow-hidden">
         <div className="absolute inset-0 -z-10 bg-[var(--navy-800)]">
           <Image
@@ -22,26 +25,25 @@ export function AboutPage() {
         </div>
         <div className="mx-auto flex w-full max-w-[1090px] flex-col items-center gap-5 px-6 py-16 text-center md:gap-6 md:px-10 md:py-24 xl:px-0 xl:py-24">
           <h1 className="hero-enter hero-enter-1 font-[family-name:var(--font-fraunces)] text-[40px] font-bold leading-tight text-white md:text-5xl md:leading-[64px] xl:text-[64px] xl:leading-[72px]">
-            About us
+            {t.about.title}
           </h1>
           <p className="hero-enter hero-enter-2 max-w-3xl text-base leading-7 text-[var(--navy-100)] md:text-lg md:leading-7">
-            {aboutHeroBody}
+            {t.about.heroBody}
           </p>
         </div>
         <Selvage />
       </section>
 
-      {/* Our services */}
       <section className="bg-[var(--color-bg-page)] px-6 py-12 md:px-10 md:py-16 xl:px-20 xl:py-28 2xl:px-[240px]">
         <div className="mx-auto flex w-full max-w-[1440px] flex-col gap-6">
           <RevealText>
             <h2 className="font-[family-name:var(--font-fraunces)] text-[34px] font-semibold leading-[44px] text-[var(--color-text-primary)] md:text-[40px] md:leading-[50px]">
-              Our services
+              {t.about.servicesTitle}
             </h2>
           </RevealText>
 
           <div className="flex w-full flex-col">
-            {services.map((service, index) => (
+            {t.services.map((service, index) => (
               <Reveal key={service.title} delay={index * 60}>
                 <details className="service-accordion group flex flex-col gap-3 border-b border-[var(--color-border-default)] py-6">
                   <summary className="flex w-full cursor-pointer list-none items-center gap-4 text-left [&::-webkit-details-marker]:hidden">

@@ -1,9 +1,13 @@
+"use client";
+
 import Image from "next/image";
-import { aboutCopy, founders } from "@/lib/content";
 import { Button } from "@/components/ui/button";
 import { Reveal, RevealText } from "@/components/motion/reveal";
+import { useContent } from "@/lib/i18n";
 
 export function GetToKnowUs() {
+  const t = useContent();
+
   return (
     <section
       id="get-to-know-us"
@@ -11,7 +15,7 @@ export function GetToKnowUs() {
     >
       <div className="mx-auto grid w-full max-w-[1440px] grid-cols-1 gap-4 lg:grid-cols-2 lg:items-center lg:gap-12 xl:gap-16">
         <div className="flex flex-col gap-8 md:grid md:grid-cols-2 md:gap-6 lg:gap-8">
-          {founders.map((person, index) => (
+          {t.founders.map((person, index) => (
             <Reveal key={person.name} delay={index * 100}>
               <figure className="flex flex-col gap-6 xl:gap-8">
                 <div className="portrait-zoom relative aspect-[312/353] w-full overflow-hidden rounded-2xl bg-[var(--color-bg-tint)] md:aspect-[3/4] lg:aspect-auto lg:h-[380px] xl:h-[420px] 2xl:h-[471px]">
@@ -46,15 +50,15 @@ export function GetToKnowUs() {
 
         <RevealText className="flex flex-col items-start gap-4 md:gap-5" delay={120}>
           <h2 className="font-[family-name:var(--font-fraunces)] text-[28px] font-semibold leading-9 text-[var(--color-text-primary)] md:text-[34px] md:leading-[44px] xl:text-[40px] xl:leading-[50px]">
-            Get to know us
+            {t.getToKnowUs.title}
           </h2>
           <div className="space-y-[22px] text-base leading-[26px] text-[var(--color-text-muted)] md:text-sm md:leading-[22px]">
-            {aboutCopy.map((paragraph) => (
+            {t.aboutCopy.map((paragraph) => (
               <p key={paragraph.slice(0, 40)}>{paragraph}</p>
             ))}
           </div>
           <Button href="#contact" variant="brand" className="w-full justify-center md:w-auto">
-            Start a conversation
+            {t.getToKnowUs.cta}
           </Button>
         </RevealText>
       </div>
