@@ -133,7 +133,7 @@ No Storybook. No component docs site.
 
 | Component | File | Role |
 |-----------|------|------|
-| `Header` | `header.tsx` | Client component; sticky nav, mobile menu, language toggle (UI only). |
+| `Header` | `header.tsx` | Client component; sticky nav, mobile menu, EN/ES language toggle (persisted). |
 | `Footer` | `footer.tsx` | Server component; mobile/tablet vs desktop layouts at `xl:`. |
 | `Selvage` / `SelvageMark` | `selvage.tsx` | Brand stripe divider (green/teal/gold/navy weighted flex segments). |
 | `ContactForm` | `contact-form.tsx` | Client form → `POST /api/leads`. |
@@ -145,7 +145,7 @@ No Storybook. No component docs site.
 
 - **App Router pages** (`app/*/page.tsx`) are thin wrappers importing page components.
 - **Server components by default**; add `"use client"` only for interactivity (forms, nav state, accordions).
-- **Copy/data** lives in `lib/content.ts` — add strings there, not inline in JSX, when content is shared or repeated.
+- **Copy/data** lives in `lib/i18n/en.ts` and `lib/i18n/es.ts` — add strings there (both locales), not inline in JSX. Use `useContent()` from `@/lib/i18n`. `lib/content.ts` re-exports English for legacy imports.
 - **Composition over abstraction** — section markup stays in page components; no over-abstracted layout primitives.
 
 ### Example: mapping a Figma button
@@ -209,7 +209,7 @@ import Image from "next/image";
 </div>
 ```
 
-Image paths for founders and hero are defined in `lib/content.ts`.
+Image paths for founders and hero are defined in `lib/i18n/en.ts` / `lib/i18n/es.ts`.
 
 No CDN config — static assets served from Next.js `public/`.
 
@@ -302,7 +302,8 @@ components/
   contact-form.tsx    # Lead capture form (client)
 
 lib/
-  content.ts          # All marketing copy + structured content
+  content.ts          # Legacy EN re-exports (prefer lib/i18n/)
+  i18n/               # LocaleProvider, EN/ES dictionaries, useContent()
   validations/        # Zod schemas
   supabase/           # Server Supabase client
   resend.ts           # Email helper
@@ -317,7 +318,7 @@ public/
 
 1. Add route in `app/<route>/page.tsx`
 2. Build page component in `components/<feature>/`
-3. Add copy to `lib/content.ts`
+3. Add copy to `lib/i18n/en.ts` and `lib/i18n/es.ts`
 4. Reuse `components/ui/*` and layout chrome (`Header`, `Footer`, `Selvage`)
 5. Match Figma spacing/type using tokens — verify at mobile, tablet, and desktop breakpoints
 
@@ -329,7 +330,7 @@ public/
 - [ ] Use Fraunces for display headings, Public Sans for body/UI
 - [ ] Reuse `Button`, `TextInput`, `Selvage`, `Header`, `Footer`
 - [ ] Separate mobile vs tablet/desktop nav rows — never show Contact + hamburger together on mobile
-- [ ] Put new copy in `lib/content.ts`
+- [ ] Put new copy in `lib/i18n/en.ts` and `lib/i18n/es.ts`
 - [ ] Commit images to `public/images/`, not `.figma-ref/`
 - [ ] Add `"use client"` only when needed
 - [ ] Preserve WCAG focus styles (`--color-focus` ring, 3px on buttons)

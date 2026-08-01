@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import { site } from "@/lib/content";
+import { useContent, useLocale, type Locale } from "@/lib/i18n";
 import { Button } from "@/components/ui/button";
 import { Selvage } from "@/components/selvage";
 
@@ -23,39 +23,61 @@ function MenuIcon({ className }: { className?: string }) {
 }
 
 function LanguageToggle() {
+  const { locale, setLocale } = useLocale();
+  const t = useContent();
+
+  const optionClass = (code: Locale) =>
+    `rounded-full px-1 py-0.5 transition-colors duration-200 ${
+      locale === code
+        ? "font-semibold leading-[18px] text-[var(--color-text-primary)]"
+        : "leading-[22px] text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)]"
+    }`;
+
   return (
     <div
       className="flex shrink-0 items-center gap-[5px] rounded-full border border-[var(--color-border-default)] px-2.5 py-[5px] text-sm transition-colors duration-200 hover:border-[var(--teal-500)]"
-      aria-label="Language"
+      role="group"
+      aria-label={t.nav.language}
     >
-      <span className="font-semibold leading-[18px] text-[var(--color-text-primary)]">
+      <button
+        type="button"
+        className={optionClass("en")}
+        aria-pressed={locale === "en"}
+        aria-label="English"
+        onClick={() => setLocale("en")}
+      >
         EN
-      </span>
+      </button>
       <span className="text-[var(--color-text-muted)]" aria-hidden>
         ·
       </span>
-      <span
-        className="leading-[22px] text-[var(--color-text-muted)]"
-        title="Spanish coming soon"
+      <button
+        type="button"
+        className={optionClass("es")}
+        aria-pressed={locale === "es"}
+        aria-label="Español"
+        onClick={() => setLocale("es")}
       >
         ES
-      </span>
+      </button>
     </div>
   );
 }
 
 function LogoLink({ showTagline = false }: { showTagline?: boolean }) {
+  const t = useContent();
+
   return (
     <Link
       href="/"
       className="min-w-0 shrink transition-opacity duration-200 hover:opacity-80"
     >
       <span className="whitespace-nowrap font-[family-name:var(--font-fraunces)] text-xl font-semibold text-[var(--color-text-brand)] md:text-2xl">
-        {site.name}
+        {t.site.name}
       </span>
       {showTagline ? (
         <span className="mt-0.5 block text-[10px] font-medium tracking-[1.8px] text-[var(--color-text-primary)] md:text-[11px]">
-          {site.tagline}
+          {t.site.tagline}
         </span>
       ) : null}
     </Link>
@@ -63,13 +85,15 @@ function LogoLink({ showTagline = false }: { showTagline?: boolean }) {
 }
 
 function PrimaryNavLinks({ aboutActive }: { aboutActive: boolean }) {
+  const t = useContent();
+
   return (
     <>
       <Link
         href="/#what-we-do"
         className="nav-link text-base font-bold text-[var(--color-text-primary)]"
       >
-        What we do
+        {t.nav.whatWeDo}
       </Link>
       <Link
         href="/about"
@@ -77,7 +101,7 @@ function PrimaryNavLinks({ aboutActive }: { aboutActive: boolean }) {
           aboutActive ? "nav-link-active font-bold" : "font-medium"
         }`}
       >
-        About
+        {t.nav.about}
       </Link>
     </>
   );
@@ -85,6 +109,7 @@ function PrimaryNavLinks({ aboutActive }: { aboutActive: boolean }) {
 
 export function Header() {
   const pathname = usePathname();
+  const t = useContent();
   const menuToggleRef = useRef<HTMLInputElement>(null);
   const [scrolled, setScrolled] = useState(false);
   const aboutActive = pathname.startsWith("/about");
@@ -121,7 +146,6 @@ export function Header() {
       }`}
     >
       <div className="mx-auto w-full max-w-[1440px] px-5 py-4 md:px-8 md:py-5 xl:px-16">
-        {/* Mobile: CSS checkbox toggle — works even if React hydration is delayed */}
         <div className="relative z-10 md:hidden">
           <input
             ref={menuToggleRef}
@@ -148,22 +172,21 @@ export function Header() {
             aria-label="Mobile"
           >
             <Link href="/" onClick={closeMenu} className={mobileLinkClass(homeActive)}>
-              Home
+              {t.nav.home}
             </Link>
             <Link
               href="/about"
               onClick={closeMenu}
               className={mobileLinkClass(aboutActive)}
             >
-              About
+              {t.nav.about}
             </Link>
             <Button href="#contact" className="w-full" onClick={closeMenu}>
-              Contact Us
+              {t.nav.contactUs}
             </Button>
           </nav>
         </div>
 
-        {/* Tablet/desktop */}
         <div className="hidden items-center justify-between gap-4 md:flex">
           <LogoLink showTagline />
           <div className="flex items-center gap-7 lg:gap-9">
@@ -171,7 +194,7 @@ export function Header() {
               <PrimaryNavLinks aboutActive={aboutActive} />
             </nav>
             <LanguageToggle />
-            <Button href="#contact">Contact Us</Button>
+            <Button href="#contact">{t.nav.contactUs}</Button>
           </div>
         </div>
       </div>
