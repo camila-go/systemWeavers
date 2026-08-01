@@ -19,7 +19,13 @@ type LocaleContextValue = {
   setLocale: (locale: Locale) => void;
 };
 
-const LocaleContext = createContext<LocaleContextValue | null>(null);
+const defaultLocaleValue: LocaleContextValue = {
+  locale: "en",
+  setLocale: () => {},
+};
+
+/** Non-null default so /_not-found prerender never throws when provider is missing. */
+const LocaleContext = createContext<LocaleContextValue>(defaultLocaleValue);
 
 function isLocale(value: string | null): value is Locale {
   return value === "en" || value === "es";
@@ -59,12 +65,6 @@ export function LocaleProvider({ children }: { children: ReactNode }) {
   );
 }
 
-const fallbackLocale: LocaleContextValue = {
-  locale: "en",
-  setLocale: () => {},
-};
-
-/** Falls back to English when outside LocaleProvider (e.g. /_not-found prerender). */
 export function useLocale() {
-  return useContext(LocaleContext) ?? fallbackLocale;
+  return useContext(LocaleContext);
 }
