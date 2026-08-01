@@ -32,7 +32,7 @@ export const en: Content = {
     titleLead: "Threading ",
     titleRest: "community insights into health impact.",
     body: "System Weavers Collaborative Consulting partners with public health organizations, communities, and researchers to co-design and transform health systems through inclusive engagement, equity-centered policies, and intentional design.",
-    cta: "Start A Conversation",
+    cta: "Start a conversation",
   },
   whatWeDo: {
     title: "What we do",

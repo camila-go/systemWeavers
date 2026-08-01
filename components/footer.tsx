@@ -52,12 +52,12 @@ export function Footer() {
             <p className="text-[13px] font-semibold leading-4 tracking-[1.5px] text-[var(--color-text-accent-on-dark)]">
               {t.footer.connect}
             </p>
-            <Link
+            <a
               href="#contact"
               className="link-hover text-[15px] font-medium leading-6 text-[var(--color-text-on-brand-soft)] hover:underline"
             >
               {t.footer.contact}
-            </Link>
+            </a>
           </div>
         </div>
 

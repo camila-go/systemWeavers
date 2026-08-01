@@ -81,7 +81,7 @@ export function HomePage() {
 
           <Reveal delay={200}>
             <Button
-              href="#how-we-work"
+              href="/about#our-services"
               variant="outline"
               className="mt-2 w-full justify-center md:mt-0 md:w-auto"
             >

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type { ButtonHTMLAttributes, ReactNode } from "react";
+import type { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactNode } from "react";
 
 const base =
   "inline-flex items-center justify-center rounded-[var(--radius-md)] px-7 py-3.5 text-base font-semibold leading-6 transition-all duration-200 ease-out active:scale-[0.98] disabled:opacity-60 disabled:active:scale-100 motion-reduce:transition-none motion-reduce:active:scale-100";
@@ -20,7 +20,8 @@ type Props = {
   variant?: Variant;
   className?: string;
   href?: string;
-} & ButtonHTMLAttributes<HTMLButtonElement>;
+} & ButtonHTMLAttributes<HTMLButtonElement> &
+  Pick<AnchorHTMLAttributes<HTMLAnchorElement>, "onClick">;
 
 export function Button({
   children,
@@ -34,6 +35,15 @@ export function Button({
   const classes = `${base} ${variants[variant]} ${className}`;
 
   if (href) {
+    // Same-page anchors must use native <a> — Next.js Link often skips hash scrolling.
+    if (href.startsWith("#")) {
+      return (
+        <a href={href} className={classes} onClick={onClick}>
+          {children}
+        </a>
+      );
+    }
+
     return (
       <Link href={href} className={classes} onClick={onClick as never}>
         {children}

@@ -34,7 +34,10 @@ export function AboutPage() {
         <Selvage />
       </section>
 
-      <section className="bg-[var(--color-bg-page)] px-6 py-12 md:px-10 md:py-16 xl:px-20 xl:py-28 2xl:px-[240px]">
+      <section
+        id="our-services"
+        className="scroll-mt-24 bg-[var(--color-bg-page)] px-6 py-12 md:px-10 md:py-16 xl:px-20 xl:py-28 2xl:px-[240px]"
+      >
         <div className="mx-auto flex w-full max-w-[1440px] flex-col gap-6">
           <RevealText>
             <h2 className="font-[family-name:var(--font-fraunces)] text-[34px] font-semibold leading-[44px] text-[var(--color-text-primary)] md:text-[40px] md:leading-[50px]">
