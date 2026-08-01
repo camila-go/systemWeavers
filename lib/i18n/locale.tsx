@@ -59,10 +59,12 @@ export function LocaleProvider({ children }: { children: ReactNode }) {
   );
 }
 
+const fallbackLocale: LocaleContextValue = {
+  locale: "en",
+  setLocale: () => {},
+};
+
+/** Falls back to English when outside LocaleProvider (e.g. /_not-found prerender). */
 export function useLocale() {
-  const ctx = useContext(LocaleContext);
-  if (!ctx) {
-    throw new Error("useLocale must be used within LocaleProvider");
-  }
-  return ctx;
+  return useContext(LocaleContext) ?? fallbackLocale;
 }
