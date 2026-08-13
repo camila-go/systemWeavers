@@ -7,8 +7,13 @@ export function getResend(): Resend | null {
 }
 
 export function getLeadEmailConfig() {
+  const to = (process.env.LEAD_TO_EMAIL ?? "")
+    .split(",")
+    .map((email) => email.trim())
+    .filter(Boolean);
+
   return {
     from: process.env.RESEND_FROM_EMAIL,
-    to: process.env.LEAD_TO_EMAIL,
+    to,
   };
 }

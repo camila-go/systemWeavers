@@ -56,10 +56,10 @@ export async function POST(request: Request) {
   const resend = getResend();
   const { from, to } = getLeadEmailConfig();
 
-  if (resend && from && to) {
+  if (resend && from && to.length > 0) {
     const { error: emailError } = await resend.emails.send({
       from,
-      to: [to],
+      to,
       replyTo: email,
       subject: `New lead from ${fullName}`,
       text: [
