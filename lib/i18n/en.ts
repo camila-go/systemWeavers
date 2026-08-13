@@ -255,6 +255,8 @@ export const en: Content = {
     sending: "Sending…",
     success: "Thank you — we’ll respond within two business days.",
     networkError: "Network error. Please try again.",
+    serverError:
+      "We couldn’t send your message right now. Please try again, or email us at {email}.",
     fixFields: "Please fix the highlighted fields.",
     somethingWrong: "Something went wrong.",
   },

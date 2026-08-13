@@ -7,8 +7,16 @@ import aboutHero from "../../public/images/about-hero.png";
 import founderGrisel from "../../public/images/founder-grisel.png";
 import founderMonica from "../../public/images/founder-monica.png";
 
+// Under tsup the loader above yields a plain data-URI string; under `next build`
+// the same import is typed as StaticImageData. Accept either so both builds
+// typecheck against the real shape rather than a cast.
+type PngImport = string | { src: string };
+
+const toSrc = (image: PngImport): string =>
+  typeof image === "string" ? image : image.src;
+
 export const imageMap: Record<string, string> = {
-  "/images/about-hero.png": aboutHero,
-  "/images/founder-grisel.png": founderGrisel,
-  "/images/founder-monica.png": founderMonica,
+  "/images/about-hero.png": toSrc(aboutHero),
+  "/images/founder-grisel.png": toSrc(founderGrisel),
+  "/images/founder-monica.png": toSrc(founderMonica),
 };

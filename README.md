@@ -19,7 +19,7 @@ Fill in `.env.local`:
 
 | Variable | Required | Notes |
 |----------|----------|--------|
-| `NEXT_PUBLIC_SUPABASE_URL` | Yes | Project URL |
+| `SUPABASE_URL` | Yes | Project URL. `NEXT_PUBLIC_SUPABASE_URL` is still accepted as a legacy alias, but this value is server-only, so it should not carry the browser-facing `NEXT_PUBLIC_` prefix |
 | `SUPABASE_SERVICE_ROLE_KEY` | Yes | Server-only; never expose to the client |
 | `RESEND_API_KEY` | Later | Optional until you provide keys |
 | `RESEND_FROM_EMAIL` | Later | Verified sender |
@@ -42,3 +42,16 @@ Open [http://localhost:3000](http://localhost:3000).
 - `POST /api/leads` — contact form handler
 
 Until Resend env vars are set, the API still saves leads to Supabase and skips email.
+
+## Troubleshooting
+
+**The contact form says it couldn't send your message.** `POST /api/leads`
+returns 503 when the Supabase credentials are missing and 500 when the insert
+itself fails. Check the hosting provider's runtime logs — on 503 the handler
+names exactly which env vars it could not find. Set them on the **Production**
+environment (not just Preview/Development) and redeploy.
+
+Note that leads only reach the database when a deploy actually succeeds. If
+`next build` is failing, production keeps serving the last good build, so newly
+added env vars and fixes never go live — run `npm run build` locally before
+assuming a config change took effect.

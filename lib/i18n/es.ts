@@ -255,6 +255,8 @@ export const es: Content = {
     sending: "Enviando…",
     success: "Gracias — responderemos en un plazo de dos días hábiles.",
     networkError: "Error de red. Inténtelo de nuevo.",
+    serverError:
+      "No pudimos enviar su mensaje en este momento. Inténtelo de nuevo o escríbanos a {email}.",
     fixFields: "Corrija los campos destacados.",
     somethingWrong: "Algo salió mal.",
   },

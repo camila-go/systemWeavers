@@ -42,10 +42,21 @@ export function ContactForm() {
       const json = (await res.json()) as {
         ok?: boolean;
         error?: string;
+        code?: string;
         fieldErrors?: FieldErrors;
       };
 
       if (!res.ok) {
+        // Server-side failures get localized copy that points at a fallback
+        // channel; only validation errors surface the server's own text.
+        if (json.code === "unavailable") {
+          const message = t.contact.serverError.replace("{email}", t.site.email);
+          setErrors({ form: message });
+          setStatus("error");
+          setStatusMessage(message);
+          return;
+        }
+
         setErrors(
           json.fieldErrors ?? { form: json.error ?? t.contact.somethingWrong },
         );

@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { getLeadEmailConfig, getResend } from "@/lib/resend";
-import { getServiceSupabase } from "@/lib/supabase/server";
+import { getServiceSupabase, missingSupabaseEnv } from "@/lib/supabase/server";
 import { leadSchema } from "@/lib/validations/lead";
 
 export async function POST(request: Request) {
@@ -28,11 +28,12 @@ export async function POST(request: Request) {
   const supabase = getServiceSupabase();
 
   if (!supabase) {
+    // Config detail stays in the server logs — visitors get a generic message.
+    console.error(
+      `Lead storage is not configured. Missing env vars: ${missingSupabaseEnv().join(", ")}`,
+    );
     return NextResponse.json(
-      {
-        error:
-          "Lead storage is not configured. Set NEXT_PUBLIC_SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY.",
-      },
+      { error: "Could not send your message. Please try again.", code: "unavailable" },
       { status: 503 },
     );
   }
@@ -48,7 +49,7 @@ export async function POST(request: Request) {
   if (dbError) {
     console.error("Supabase lead insert failed", dbError);
     return NextResponse.json(
-      { error: "Could not save your message. Please try again." },
+      { error: "Could not save your message. Please try again.", code: "unavailable" },
       { status: 500 },
     );
   }

@@ -102,6 +102,8 @@ export type Content = {
     sending: string;
     success: string;
     networkError: string;
+    /** Shown when the API fails server-side; `{email}` is replaced at render. */
+    serverError: string;
     fixFields: string;
     somethingWrong: string;
   };
