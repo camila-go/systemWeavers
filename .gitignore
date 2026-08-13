@@ -40,9 +40,22 @@ yarn-error.log*
 # cursor local
 .cursor/
 
+# claude code local settings
+.claude/settings.local.json
+
 # vercel
 .vercel
 
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# component-library build (design-sync converter input)
+/dist
+
+# design-sync
+.ds-sync/
+ds-bundle/
+.design-sync/.cache/
+.design-sync/learnings/
+.design-sync/node_modules

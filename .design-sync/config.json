@@ -1,0 +1,10 @@
+{
+  "projectId": "539a1b89-bcdb-43ad-b575-2718eab22bf1",
+  "shape": "package",
+  "pkg": "system-weavers",
+  "globalName": "SystemWeavers",
+  "buildCmd": "npm run build:ds",
+  "cssEntry": "dist/styles.css",
+  "srcDir": "components",
+  "readmeHeader": ".design-sync/conventions.md"
+}

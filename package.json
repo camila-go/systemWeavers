@@ -2,11 +2,15 @@
   "name": "system-weavers",
   "version": "0.1.0",
   "private": true,
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "build:ds": "tsup && node -e \"require('fs').copyFileSync('dist/index.d.mts','dist/index.d.ts')\" && node design-system/build-css.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.109.0",
@@ -27,6 +31,7 @@
     "eslint-config-next": "16.2.12",
     "playwright": "^1.49.0",
     "tailwindcss": "^4",
+    "tsup": "^8.5.1",
     "typescript": "^5"
   }
 }
