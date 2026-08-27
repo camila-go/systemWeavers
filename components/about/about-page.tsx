@@ -48,12 +48,18 @@ export function AboutPage() {
           <div className="flex w-full flex-col">
             {t.services.map((service, index) => (
               <Reveal key={service.title} delay={index * 60}>
-                <details className="service-accordion group flex flex-col gap-3 border-b border-[var(--color-border-default)] py-6">
+                {/* `name` makes the group exclusive natively — opening one
+                    closes the last, no JavaScript. Browsers without support
+                    simply allow several open, which is the old behaviour. */}
+                <details
+                  name="services"
+                  className="service-accordion group flex flex-col gap-3 border-b border-[var(--color-border-default)] py-6"
+                >
                   <summary className="flex w-full cursor-pointer list-none items-center gap-4 text-left [&::-webkit-details-marker]:hidden">
                     {/* A real heading, not a styled span: these are the terms
                         people actually search for, and as a <span> they were
                         absent from the page's heading outline entirely. */}
-                    <h3 className="text-rise flex-1 text-[22px] font-semibold leading-[30px] text-[var(--color-text-primary)] md:font-[family-name:var(--font-fraunces)]">
+                    <h3 className="accordion-title text-rise flex-1 text-[22px] font-semibold leading-[30px] md:font-[family-name:var(--font-fraunces)]">
                       {service.title}
                     </h3>
                     <Icon

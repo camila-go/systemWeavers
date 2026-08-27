@@ -377,15 +377,56 @@ body {
   }
 }
 
-/* Accordion */
+/* Accordion — shared by the About services list and the home FAQ */
 .service-accordion summary {
+  border-radius: var(--radius-md);
+  transition:
+    background-color var(--motion-duration-fast) ease,
+    box-shadow var(--motion-duration-fast) ease;
+}
+
+/* Colour is owned here rather than by a utility class on the element: it now
+   varies by state (rest / hover / open), and a hardcoded class on the title
+   silently outranks every state rule below. */
+.service-accordion .accordion-title {
+  color: var(--color-text-primary);
   transition: color var(--motion-duration-fast) ease;
 }
 
+/* The titles carry their own colour class, so hover has to target them
+   directly — a colour set on <summary> alone is overridden and never shows. */
 @media (hover: hover) {
-  .service-accordion summary:hover {
+  .service-accordion summary:hover .accordion-title {
     color: var(--color-text-brand);
   }
+
+  .service-accordion summary:hover .accordion-icon {
+    transform: scale(1.15);
+  }
+
+  /* A soft tint the full width of the row, so the whole target reads as
+     interactive rather than just the words. */
+  .service-accordion summary:hover {
+    background-color: var(--green-50);
+    box-shadow: 0 0 0 8px var(--green-50);
+  }
+}
+
+/* Keyboard users get the same affordance as pointer users. */
+.service-accordion summary:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 6px;
+}
+
+/* Pressed state — a small give on the icon confirms the tap registered,
+   which matters most on touch where there is no hover at all. */
+.service-accordion summary:active .accordion-icon {
+  transform: scale(0.9);
+}
+
+/* The open row stays marked, so the active item is obvious at a glance. */
+.service-accordion[open] .accordion-title {
+  color: var(--color-text-brand);
 }
 
 .service-accordion summary .accordion-icon {

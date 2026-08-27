@@ -26,9 +26,15 @@ export function Faq() {
         <div className="flex w-full flex-col">
           {t.faq.items.map((item, index) => (
             <Reveal key={item.question} delay={index * 60}>
-              <details className="service-accordion group flex flex-col gap-3 border-b border-[var(--color-border-default)] py-5">
+              {/* `name` makes the group exclusive natively — opening one closes
+                  the last, no JavaScript. A separate group name from the About
+                  services so the two lists never affect each other. */}
+              <details
+                name="faq"
+                className="service-accordion group flex flex-col gap-3 border-b border-[var(--color-border-default)] py-5"
+              >
                 <summary className="flex w-full cursor-pointer list-none items-center gap-4 text-left [&::-webkit-details-marker]:hidden">
-                  <span className="text-rise flex-1 text-base font-semibold leading-[26px] text-[var(--color-text-primary)] md:text-[17px]">
+                  <span className="accordion-title text-rise flex-1 text-base font-semibold leading-[26px] md:text-[17px]">
                     {item.question}
                   </span>
                   <Icon
