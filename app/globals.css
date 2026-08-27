@@ -378,6 +378,17 @@ body {
 }
 
 /* Accordion — shared by the About services list and the home FAQ */
+
+/* keepSummaryInPlace() absorbs the shift when an item above collapses. Chrome's
+   scroll anchoring tries to correct the same shift, and the two compensate for
+   it twice — measured as ~500px of drift a few frames after the click. Opting
+   these rows out leaves exactly one corrector. Scoped here rather than on
+   <html> so anchoring still works everywhere else, and the JS stays because
+   Safari has no scroll anchoring to fall back on. */
+.service-accordion {
+  overflow-anchor: none;
+}
+
 .service-accordion summary {
   border-radius: var(--radius-md);
   transition:

@@ -4,6 +4,7 @@ import Image from "next/image";
 import { Selvage } from "@/components/selvage";
 import { ContactForm } from "@/components/contact-form";
 import { Icon } from "@/components/ui/icon";
+import { keepSummaryInPlace } from "@/components/ui/accordion-anchor";
 import { Reveal, RevealText } from "@/components/motion/reveal";
 import { useContent } from "@/lib/i18n";
 
@@ -55,7 +56,9 @@ export function AboutPage() {
                   name="services"
                   className="service-accordion group flex flex-col gap-3 border-b border-[var(--color-border-default)] py-6"
                 >
-                  <summary className="flex w-full cursor-pointer list-none items-center gap-4 text-left [&::-webkit-details-marker]:hidden">
+                  <summary
+                  onClick={keepSummaryInPlace}
+                  className="flex w-full cursor-pointer list-none items-center gap-4 text-left [&::-webkit-details-marker]:hidden">
                     {/* A real heading, not a styled span: these are the terms
                         people actually search for, and as a <span> they were
                         absent from the page's heading outline entirely. */}

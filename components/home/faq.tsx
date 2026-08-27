@@ -1,6 +1,7 @@
 "use client";
 
 import { Icon } from "@/components/ui/icon";
+import { keepSummaryInPlace } from "@/components/ui/accordion-anchor";
 import { Reveal, RevealText } from "@/components/motion/reveal";
 import { useContent } from "@/lib/i18n";
 
@@ -33,7 +34,9 @@ export function Faq() {
                 name="faq"
                 className="service-accordion group flex flex-col gap-3 border-b border-[var(--color-border-default)] py-5"
               >
-                <summary className="flex w-full cursor-pointer list-none items-center gap-4 text-left [&::-webkit-details-marker]:hidden">
+                <summary
+                  onClick={keepSummaryInPlace}
+                  className="flex w-full cursor-pointer list-none items-center gap-4 text-left [&::-webkit-details-marker]:hidden">
                   <span className="accordion-title text-rise flex-1 text-base font-semibold leading-[26px] md:text-[17px]">
                     {item.question}
                   </span>
