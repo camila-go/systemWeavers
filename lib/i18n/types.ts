@@ -41,6 +41,7 @@ export type Content = {
     connect: string;
     contact: string;
     copyright: string;
+    designedBy: string;
   };
   hero: {
     overline: string;

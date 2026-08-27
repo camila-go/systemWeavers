@@ -40,6 +40,7 @@ export const es: Content = {
     connect: "CONECTAR",
     contact: "Contacto",
     copyright: "© 2026 System Weavers Collaborative Consulting, LLC ·",
+    designedBy: "Diseñado por",
   },
   hero: {
     overline:

@@ -84,8 +84,21 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="hidden overflow-hidden text-[13px] leading-5 text-[var(--color-text-on-brand-soft)] xl:block">
+        {/* Shown at every width. The copyright was previously xl-only, which
+            would have hidden the design credit on phones and tablets. */}
+        <div className="flex flex-col items-center gap-1 border-t border-white/10 pt-5 text-center text-[13px] leading-5 text-[var(--color-text-on-brand-soft)] xl:flex-row xl:justify-between xl:gap-4 xl:border-0 xl:pt-0 xl:text-left">
           <p>{t.footer.copyright}</p>
+          <p>
+            {t.footer.designedBy}{" "}
+            <a
+              href="https://www.camilagonzalez.xyz"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline decoration-white/30 underline-offset-2 transition-colors hover:text-[var(--color-text-on-brand)] hover:decoration-current"
+            >
+              camilagonzalez.xyz
+            </a>
+          </p>
         </div>
       </div>
     </footer>
