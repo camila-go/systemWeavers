@@ -1,11 +1,23 @@
 import type { Content } from "./types";
 
 export const es: Content = {
+  meta: {
+    title: "System Weavers Collaborative Consulting",
+    description:
+      "System Weavers se asocia con organizaciones de salud pública, comunidades e investigadores para codiseñar y transformar sistemas de salud mediante la participación inclusiva y un diseño centrado en la equidad.",
+    aboutTitle: "Nosotros y nuestros servicios",
+    aboutDescription:
+      "Participación comunitaria, gestión de subvenciones, evaluación, comunicaciones y planificación de acceso lingüístico para organizaciones de salud pública, financiadores e investigadores.",
+  },
+  notFound: {
+    title: "Página no encontrada",
+    body: "La página que busca no existe o ha sido movida.",
+    backHome: "Volver al inicio",
+  },
   site: {
     name: "System Weavers",
     tagline: "CONSULTORÍA COLABORATIVA",
     email: "hello@system-weavers.com",
-    phone: "(202) 555-0147",
     address: ["1234 K Street NW, Suite 500", "Washington, D.C. 20005"],
     certifications: "WOSB · DC CBE · NAICS 541820",
   },
@@ -15,6 +27,10 @@ export const es: Content = {
     home: "Inicio",
     contactUs: "Contáctanos",
     language: "Idioma",
+    openMenu: "Abrir menú",
+    closeMenu: "Cerrar menú",
+    mobileNavLabel: "Móvil",
+    homeLink: "System Weavers — inicio",
   },
   footer: {
     collaborativeConsulting: "Consultoría Colaborativa",
@@ -29,28 +45,28 @@ export const es: Content = {
     overline:
       "PARTICIPACIÓN COMUNITARIA • EVALUACIÓN • COMUNICACIONES • ACCESO LINGÜÍSTICO",
     subline: "Escuchar • Colaborar • Cocrear el cambio",
-    titleLead: "Tejiendo ",
-    titleRest: "perspectivas comunitarias en impacto en salud.",
-    body: "System Weavers Collaborative Consulting se asocia con organizaciones de salud pública, comunidades e investigadores para codiseñar y transformar sistemas de salud mediante la participación inclusiva, políticas centradas en la equidad y un diseño intencional.",
+    titleLead: "Entretejiendo ",
+    titleRest: "las perspectivas de la comunidad en un impacto en la salud.",
+    body: "System Weavers Collaborative Consulting ayuda a organizaciones de salud pública, financiadores e investigadores a diseñar y gestionar programas de participación comunitaria, subvenciones, evaluación y acceso lingüístico — para que el trabajo centrado en la equidad pase de la idea a un impacto duradero.",
     cta: "Iniciar una conversación",
   },
   whatWeDo: {
-    title: "Qué hacemos",
+    title: "Así lo hacemos",
     subtitle: "Cuatro servicios conectados, un enfoque colaborativo.",
-    seeHow: "Cómo lo hacemos",
+    seeHow: "Así lo hacemos",
   },
   capabilities: [
     {
       title: "Participación comunitaria y pública",
       description:
-        "La participación significativa comienza con relaciones de confianza, conversación auténtica y conexión humana — nuestra especialidad.",
+        "La participación significativa comienza con relaciones de mutua confianza, conversaciones auténticas y conexiones humanas. Esta es nuestra especialidad.",
       tone: "teal",
       icon: "HeartHandshake",
     },
     {
       title: "Gestión de subvenciones",
       description:
-        "Servicios integrales de gestión de subvenciones que ayudan a las organizaciones a diseñar, administrar y supervisar programas que generan un impacto medible — desde el diseño hasta el cierre de la adjudicación.",
+        "Servicios integrales de gestión de subvenciones que ayudan a las organizaciones a diseñar, administrar y supervisar programas que generan un impacto medible — desde el diseño hasta el cierre de la subvención.",
       tone: "green",
       icon: "CircleCheck",
     },
@@ -71,7 +87,7 @@ export const es: Content = {
     {
       title: "Planificación de acceso lingüístico",
       description:
-        "Ayudamos a las organizaciones a pasar de la traducción ad hoc a un acceso lingüístico intencional y sostenible.",
+        "Ayudamos a las organizaciones a pasar de la traducción fortuita e imprevista a un acceso lingüístico intencional y sostenible.",
       tone: "green",
       icon: "Network",
     },
@@ -84,7 +100,7 @@ export const es: Content = {
     },
   ],
   howWeWork: {
-    title: "Cómo codiseñamos",
+    title: "Así es nuestro diseño participativo",
     subtitle:
       "Cuatro pasos, un método colaborativo — cada proyecto sigue el mismo hilo.",
     stepLabel: "PASO",
@@ -146,15 +162,51 @@ export const es: Content = {
   aboutCopy: [
     "Fundamos System Weavers Collaborative Consulting porque creemos que el cambio significativo ocurre cuando las personas, las organizaciones y los sistemas trabajan juntos.",
     "Con décadas de experiencia en salud, impacto social, gestión de programas, evaluación, participación de partes interesadas y consultoría estratégica, creamos System Weavers para ayudar a las organizaciones a navegar la complejidad, fortalecer alianzas y generar un impacto sostenible para las comunidades a las que sirven.",
-    "Juntas aportamos una experiencia complementaria que une estrategia e implementación, visión y ejecución, evidencia y acción. Combinamos pensamiento sistémico, expertise técnico profundo y un enfoque colaborativo para ayudar a nuestros clientes a resolver desafíos complejos, fortalecer capacidades y crear un impacto duradero en las comunidades.",
-    "En el centro de nuestro trabajo creemos que las soluciones más efectivas surgen de la asociación. Trabajamos junto a nuestros clientes y las comunidades en el corazón de su labor, para comprender sus desafíos únicos, identificar oportunidades de crecimiento e innovación, y desarrollar estrategias prácticas que conduzcan a resultados significativos.",
+    "Juntas aportamos una experiencia complementaria que une estrategia e implementación, visión y ejecución, evidencia y acción. Combinamos pensamientos sistemáticos, profunda experiencia técnica y un enfoque colaborativo para ayudar a nuestros clientes a resolver desafíos complejos, fortalecer capacidades y crear un impacto duradero en las comunidades.",
+    "Como valor fundamental de nuestro trabajo creemos que las soluciones más eficaces surgen a través de la colaboración y alianzas. Trabajamos junto a nuestros clientes y las comunidades en el corazón de su labor, para comprender sus desafíos únicos, identificar oportunidades de crecimiento e innovación, y desarrollar estrategias prácticas que conduzcan a resultados significativos.",
     "Estamos comprometidas a asociarnos con organizaciones que trabajan para mejorar vidas, fortalecer comunidades y construir un futuro más equitativo y sostenible.",
   ],
   why: {
-    title: "Por qué System Weavers",
+    title: "¿Por qué System Weavers?",
     paragraphs: [
-      "Las organizaciones enfrentan hoy desafíos cada vez más complejos que requieren más que soluciones aisladas. Reunimos consultoras experimentadas, pensamiento estratégico y enfoques colaborativos para ayudar a alinear personas, procesos y propósito.",
+      "Las organizaciones enfrentan hoy desafíos cada vez más complejos que requieren más que soluciones aisladas. Reunimos consultores con experiencia, pensamiento estratégico y enfoques colaborativos para ayudar a alinear personas, procesos y propósito.",
       "Nuestro trabajo abarca salud, impacto social, filantropía, investigación y responsabilidad corporativa — ayudando a las organizaciones a transformar ideas en resultados sostenibles.",
+    ],
+  },
+  faq: {
+    title: "Preguntas frecuentes",
+    items: [
+      {
+        question: "¿Qué hace System Weavers?",
+        answer:
+          "System Weavers es una firma de consultoría colaborativa que se asocia con organizaciones de salud pública, comunidades e investigadores para diseñar y gestionar programas en cuatro áreas: participación comunitaria, gestión de subvenciones, monitoreo y evaluación, y comunicaciones, además de planificación de acceso lingüístico y eventos vinculados a subvenciones.",
+      },
+      {
+        question: "¿Con quién trabaja System Weavers?",
+        answer:
+          "Trabajamos con organizaciones de salud pública, financiadores, investigadores y organizaciones comunitarias en Estados Unidos, el Caribe y América Latina. Tenemos sede en Chicago.",
+      },
+      {
+        question:
+          "¿Qué es la gestión de subvenciones y System Weavers se encarga de todo el proceso?",
+        answer:
+          "Sí — ofrecemos gestión integral de subvenciones, desde el diseño del programa y la administración hasta el cierre de la subvención, ayudando a las organizaciones a ejecutar programas de subvenciones que generan resultados medibles.",
+      },
+      {
+        question: "¿Cómo aborda System Weavers la participación comunitaria?",
+        answer:
+          "Seguimos un método colaborativo de cuatro pasos: Escuchar (comprender el contexto y a quiénes afecta), Conectar (mapear los sistemas y las relaciones que moldean los resultados), Construir (diseñar e implementar soluciones en conjunto) y Sostener (crear estructuras y prácticas duraderas).",
+      },
+      {
+        question: "¿System Weavers ofrece servicios de acceso lingüístico?",
+        answer:
+          "Sí — ayudamos a las organizaciones a pasar de la traducción fortuita e imprevista a una planificación de acceso lingüístico intencional y sostenible.",
+      },
+      {
+        question: "¿Cómo empiezo a trabajar con System Weavers?",
+        answer:
+          "Escríbanos a través del formulario de contacto o al correo hello@system-weavers.com — respondemos en un plazo de dos días laborales.",
+      },
     ],
   },
   visionMission: {
@@ -240,20 +292,20 @@ export const es: Content = {
   ],
   contact: {
     title: "Iniciar una conversación",
-    introMobile: "Responderemos en un plazo de dos días hábiles.",
+    introMobile: "Responderemos en un plazo de dos días laborales.",
     introDesktop:
-      "Cuéntenos sus objetivos y responderemos en un plazo de dos días hábiles.",
+      "Cuéntenos sus objetivos y responderemos en un plazo de dos días laborales.",
     fullName: "Nombre completo (obligatorio)",
     email: "Correo electrónico (obligatorio)",
     message: "¿Cómo podemos ayudar? (obligatorio)",
     placeholderName: "Jane Rivera",
     placeholderEmail: "jane@organizacion.org",
-    placeholderMessage: "Cuéntenos un poco sobre su proyecto u objetivo de política…",
+    placeholderMessage: "Cuéntenos un poco sobre su proyecto u objetivo político…",
     consent:
       "Al proporcionar su información, usted acepta recibir mensajes por correo electrónico de System Weavers.",
-    submit: "Acepto, conectar con las Weavers",
+    submit: "Acepto conectar con los Weavers",
     sending: "Enviando…",
-    success: "Gracias — responderemos en un plazo de dos días hábiles.",
+    success: "Gracias — responderemos en un plazo de dos días laborales.",
     networkError: "Error de red. Inténtelo de nuevo.",
     serverError:
       "No pudimos enviar su mensaje en este momento. Inténtelo de nuevo o escríbanos a {email}.",

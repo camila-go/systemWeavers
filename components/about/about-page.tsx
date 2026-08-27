@@ -50,9 +50,12 @@ export function AboutPage() {
               <Reveal key={service.title} delay={index * 60}>
                 <details className="service-accordion group flex flex-col gap-3 border-b border-[var(--color-border-default)] py-6">
                   <summary className="flex w-full cursor-pointer list-none items-center gap-4 text-left [&::-webkit-details-marker]:hidden">
-                    <span className="text-rise flex-1 text-[22px] font-semibold leading-[30px] text-[var(--color-text-primary)] md:font-[family-name:var(--font-fraunces)]">
+                    {/* A real heading, not a styled span: these are the terms
+                        people actually search for, and as a <span> they were
+                        absent from the page's heading outline entirely. */}
+                    <h3 className="text-rise flex-1 text-[22px] font-semibold leading-[30px] text-[var(--color-text-primary)] md:font-[family-name:var(--font-fraunces)]">
                       {service.title}
-                    </span>
+                    </h3>
                     <Icon
                       name="Plus"
                       className="accordion-icon size-5 shrink-0 text-[var(--teal-500)] group-open:hidden"

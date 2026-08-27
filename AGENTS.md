@@ -83,7 +83,7 @@ Tokens are CSS custom properties — no JSON/token-transform pipeline. Figma var
 
 ### Typography
 
-Loaded in `app/layout.tsx` via `next/font/google`:
+Loaded in `app/[locale]/layout.tsx` via `next/font/google`:
 
 | Role | Font | CSS variable | Tailwind usage |
 |------|------|--------------|----------------|
@@ -133,7 +133,7 @@ No Storybook. No component docs site.
 
 | Component | File | Role |
 |-----------|------|------|
-| `Header` | `header.tsx` | Client component; sticky nav, mobile menu, EN/ES language toggle (persisted). |
+| `Header` | `header.tsx` | Client component; sticky nav, mobile menu, EN/ES language toggle (links to the current page's counterpart URL). |
 | `Footer` | `footer.tsx` | Server component; mobile/tablet vs desktop layouts at `xl:`. |
 | `Selvage` / `SelvageMark` | `selvage.tsx` | Brand stripe divider (green/teal/gold/navy weighted flex segments). |
 | `ContactForm` | `contact-form.tsx` | Client form → `POST /api/leads`. |
@@ -143,7 +143,7 @@ No Storybook. No component docs site.
 
 ### Component architecture
 
-- **App Router pages** (`app/*/page.tsx`) are thin wrappers importing page components.
+- **App Router pages** (`app/[locale]/*/page.tsx`) are thin wrappers importing page components.
 - **Server components by default**; add `"use client"` only for interactivity (forms, nav state, accordions).
 - **Copy/data** lives in `lib/i18n/en.ts` and `lib/i18n/es.ts` — add strings there (both locales), not inline in JSX. Use `useContent()` from `@/lib/i18n`. `lib/content.ts` re-exports English for legacy imports.
 - **Composition over abstraction** — section markup stays in page components; no over-abstracted layout primitives.
@@ -285,16 +285,20 @@ const toneStyles = {
 ## 7. Project structure
 
 ```
+proxy.ts              # Locale URL mapping (Next 16 name for middleware)
+
 app/
-  layout.tsx          # Root layout, fonts, Header/Footer shell
+  [locale]/
+    layout.tsx        # Root layout: <html lang>, fonts, Header/Footer shell
+    page.tsx          # Home route → HomePage (+ FAQPage JSON-LD)
+    about/page.tsx    # About route → AboutPage
+    not-found.tsx     # Localized 404
   globals.css         # Design tokens + base styles
-  page.tsx            # Home route → HomePage
-  about/page.tsx      # About route → AboutPage
   api/leads/route.ts  # Contact form API
 
 components/
   ui/                 # Reusable primitives (Button, Input, Icon)
-  home/               # Home page sections
+  home/               # Home page sections (incl. faq.tsx)
   about/              # About page sections
   header.tsx          # Global nav (client)
   footer.tsx          # Global footer
@@ -303,7 +307,11 @@ components/
 
 lib/
   content.ts          # Legacy EN re-exports (prefer lib/i18n/)
-  i18n/               # LocaleProvider, EN/ES dictionaries, useContent()
+  i18n/
+    config.ts         # Locale type, localePath/stripLocale (no deps — safe anywhere)
+    dictionaries.ts   # getDictionary() for server components
+    index.ts          # useContent()/useLocale() (client)
+  seo.ts              # canonical + hreflang helper
   validations/        # Zod schemas
   supabase/           # Server Supabase client
   resend.ts           # Email helper
@@ -314,9 +322,25 @@ public/
 .figma-ref/           # Figma MCP exports (gitignored, local reference)
 ```
 
+### Localized routing
+
+Locale lives in the **URL**, not in state: English is unprefixed (`/`, `/about`)
+so existing indexed URLs keep working, Spanish is prefixed (`/es`, `/es/about`).
+`proxy.ts` rewrites unprefixed paths to the `/en` tree and redirects `/en/*`
+back out so no page is reachable at two addresses.
+
+- Build internal links with `localePath(locale, "/about")` — never hardcode
+  `href="/about"`, or Spanish pages will bounce visitors into English.
+- Compare routes with `stripLocale(pathname)` so `/es/about` counts as "about".
+- Server components read copy via `getDictionary(locale)`; client components
+  use `useContent()`. `lib/i18n/index.ts` is `"use client"` — importing it from
+  a server component gives you client references, not data.
+- Page `<title>`/description live in `meta` in each dictionary, and each page
+  sets `alternates: alternatesFor(locale, path)` for canonical + hreflang.
+
 ### Feature organization pattern
 
-1. Add route in `app/<route>/page.tsx`
+1. Add route in `app/[locale]/<route>/page.tsx`
 2. Build page component in `components/<feature>/`
 3. Add copy to `lib/i18n/en.ts` and `lib/i18n/es.ts`
 4. Reuse `components/ui/*` and layout chrome (`Header`, `Footer`, `Selvage`)

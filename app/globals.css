@@ -366,8 +366,12 @@ body {
   transition: color var(--motion-duration-fast) ease, opacity var(--motion-duration-fast) ease;
 }
 
+/* Footer links sit on the dark brand background, so they brighten to white on
+   hover. Scoped to the footer deliberately: unscoped, this rule also caught the
+   contact section's email/phone links, which sit on white — turning them
+   white-on-white and making them disappear on hover. */
 @media (hover: hover) {
-  .link-hover:hover {
+  footer .link-hover:hover {
     color: var(--color-text-on-brand);
     opacity: 1;
   }

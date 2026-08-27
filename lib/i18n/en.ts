@@ -1,11 +1,23 @@
 import type { Content } from "./types";
 
 export const en: Content = {
+  meta: {
+    title: "System Weavers Collaborative Consulting",
+    description:
+      "System Weavers partners with public health organizations, communities, and researchers to co-design and transform health systems through inclusive engagement and equity-centered design.",
+    aboutTitle: "About & Our Services",
+    aboutDescription:
+      "Community engagement, grants management, monitoring and evaluation, communications, and language access planning for public health organizations, funders, and researchers.",
+  },
+  notFound: {
+    title: "Page not found",
+    body: "The page you’re looking for doesn’t exist or has been moved.",
+    backHome: "Back to home",
+  },
   site: {
     name: "System Weavers",
     tagline: "COLLABORATIVE CONSULTING",
     email: "hello@system-weavers.com",
-    phone: "(202) 555-0147",
     address: ["1234 K Street NW, Suite 500", "Washington, D.C. 20005"],
     certifications: "WOSB · DC CBE · NAICS 541820",
   },
@@ -13,8 +25,12 @@ export const en: Content = {
     whatWeDo: "What we do",
     about: "About",
     home: "Home",
-    contactUs: "Contact Us",
+    contactUs: "Contact us",
     language: "Language",
+    openMenu: "Open menu",
+    closeMenu: "Close menu",
+    mobileNavLabel: "Mobile",
+    homeLink: "System Weavers — home",
   },
   footer: {
     collaborativeConsulting: "Collaborative Consulting",
@@ -31,7 +47,7 @@ export const en: Content = {
     subline: "Listening • Collaborating • Cocreating Change",
     titleLead: "Threading ",
     titleRest: "community insights into health impact.",
-    body: "System Weavers Collaborative Consulting partners with public health organizations, communities, and researchers to co-design and transform health systems through inclusive engagement, equity-centered policies, and intentional design.",
+    body: "System Weavers Collaborative Consulting helps public health organizations, funders, and researchers design and manage community engagement, grants, evaluation, and language access programs — so equity-centered work moves from idea to lasting impact.",
     cta: "Start a conversation",
   },
   whatWeDo: {
@@ -50,7 +66,7 @@ export const en: Content = {
     {
       title: "Grants Management",
       description:
-        "End-to-end grants management services, helping organizations design, administer, and oversee grant programs that deliver measurable impact — from program design through award closeout.",
+        "End-to-end grants management services, helping organizations design, administer, and oversee grant programs that deliver measurable impact — from program design through award close out.",
       tone: "green",
       icon: "CircleCheck",
     },
@@ -151,10 +167,46 @@ export const en: Content = {
     "We are committed to partnering with organizations that are working to improve lives, strengthen communities, and build a more equitable and sustainable future.",
   ],
   why: {
-    title: "Why System Weavers",
+    title: "Why System Weavers?",
     paragraphs: [
       "Organizations today face increasingly complex challenges that require more than isolated solutions. We bring together experienced consultants, strategic thinking, and collaborative approaches to help clients align people, processes, and purpose.",
       "Our work spans healthcare, social impact, philanthropy, research, and corporate responsibility — helping organizations transform ideas into sustainable results.",
+    ],
+  },
+  faq: {
+    title: "Frequently asked questions",
+    items: [
+      {
+        question: "What does System Weavers do?",
+        answer:
+          "System Weavers is a collaborative consulting firm that partners with public health organizations, communities, and researchers to design and manage programs across four areas: community engagement, grants management, monitoring & evaluation, and communications, plus language access planning and grant-related events.",
+      },
+      {
+        question: "Who does System Weavers work with?",
+        answer:
+          "We work with public health organizations, funders, researchers, and community-based organizations across the United States, the Caribbean, and Latin America. We're based in Chicago.",
+      },
+      {
+        question:
+          "What is grants management, and does System Weavers handle the whole process?",
+        answer:
+          "Yes — we provide end-to-end grants management, from program design through award administration to close out, helping organizations run grant programs that deliver measurable results.",
+      },
+      {
+        question: "How does System Weavers approach community engagement?",
+        answer:
+          "We follow a four-step collaborative method: Listen (understand context and who's affected), Connect (map the systems and relationships shaping outcomes), Build (design and implement solutions together), and Sustain (build lasting structures and practices).",
+      },
+      {
+        question: "Does System Weavers offer language access services?",
+        answer:
+          "Yes — we help organizations move from ad hoc translation to intentional, sustainable language access planning.",
+      },
+      {
+        question: "How do I get started working with System Weavers?",
+        answer:
+          "Reach out through the contact form or email hello@system-weavers.com — we respond within two business days.",
+      },
     ],
   },
   visionMission: {
@@ -190,7 +242,7 @@ export const en: Content = {
         "Manage day-to-day grant operations, including budget tracking, deliverable milestones, and vendor or sub-recipient coordination.",
         "Monitor program performance and outcomes, collecting data and documentation to support funder reporting requirements.",
         "Prepare progress reports and financial reports to demonstrate compliance and program impact throughout the award period.",
-        "Coordinate award closeout activities, ensuring all deliverables, reports, and documentation are completed and submitted on time.",
+        "Coordinate award close out activities, ensuring all deliverables, reports, and documentation are completed and submitted on time.",
       ],
     },
     {

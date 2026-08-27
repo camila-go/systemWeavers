@@ -1,70 +1,51 @@
 "use client";
 
-import {
-  createContext,
-  useCallback,
-  useContext,
-  useEffect,
-  useMemo,
-  useState,
-  type ReactNode,
-} from "react";
+import { createContext, useContext, useMemo, type ReactNode } from "react";
+import { DEFAULT_LOCALE, type Locale } from "./config";
 
-export type Locale = "en" | "es";
+export type { Locale };
 
 const STORAGE_KEY = "sw-locale";
 
 type LocaleContextValue = {
   locale: Locale;
-  setLocale: (locale: Locale) => void;
-};
-
-const defaultLocaleValue: LocaleContextValue = {
-  locale: "en",
-  setLocale: () => {},
 };
 
 /** Non-null default so /_not-found prerender never throws when provider is missing. */
-const LocaleContext = createContext<LocaleContextValue>(defaultLocaleValue);
+const LocaleContext = createContext<LocaleContextValue>({ locale: DEFAULT_LOCALE });
 
-function isLocale(value: string | null): value is Locale {
-  return value === "en" || value === "es";
+/**
+ * Persist an explicit language choice. Only the language toggle calls this —
+ * merely visiting a shared `/es` link shouldn't silently rewrite someone's
+ * preference, and writing on render would race `PreferredLocaleRedirect`.
+ */
+export function rememberLocale(locale: Locale) {
+  try {
+    window.localStorage.setItem(STORAGE_KEY, locale);
+  } catch {
+    /* ignore storage errors */
+  }
 }
 
-export function LocaleProvider({ children }: { children: ReactNode }) {
-  const [locale, setLocaleState] = useState<Locale>("en");
+/**
+ * The route is the source of truth for locale — `/es/*` renders Spanish, every
+ * other path renders English — so this provider takes `locale` as a prop from
+ * the layout rather than holding state.
+ */
+export function LocaleProvider({
+  locale,
+  children,
+}: {
+  locale: Locale;
+  children: ReactNode;
+}) {
+  const value = useMemo(() => ({ locale }), [locale]);
 
-  useEffect(() => {
-    try {
-      const stored = window.localStorage.getItem(STORAGE_KEY);
-      if (isLocale(stored)) {
-        setLocaleState(stored);
-      }
-    } catch {
-      /* ignore storage errors */
-    }
-  }, []);
-
-  useEffect(() => {
-    document.documentElement.lang = locale;
-  }, [locale]);
-
-  const setLocale = useCallback((next: Locale) => {
-    setLocaleState(next);
-    try {
-      window.localStorage.setItem(STORAGE_KEY, next);
-    } catch {
-      /* ignore storage errors */
-    }
-  }, []);
-
-  const value = useMemo(() => ({ locale, setLocale }), [locale, setLocale]);
-
-  return (
-    <LocaleContext.Provider value={value}>{children}</LocaleContext.Provider>
-  );
+  return <LocaleContext.Provider value={value}>{children}</LocaleContext.Provider>;
 }
 
 export function useLocale() {
   return useContext(LocaleContext);
 }
+
+export { STORAGE_KEY };

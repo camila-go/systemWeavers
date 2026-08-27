@@ -5,8 +5,10 @@ import { Icon } from "@/components/ui/icon";
 import { Selvage } from "@/components/selvage";
 import { ContactForm } from "@/components/contact-form";
 import { GetToKnowUs } from "@/components/home/get-to-know-us";
+import { Faq } from "@/components/home/faq";
 import { Reveal, RevealText } from "@/components/motion/reveal";
-import { useContent } from "@/lib/i18n";
+import { useContent, useLocale } from "@/lib/i18n";
+import { localePath } from "@/lib/i18n/config";
 import type { Tone } from "@/lib/i18n/types";
 
 const toneStyles: Record<Tone, string> = {
@@ -17,6 +19,7 @@ const toneStyles: Record<Tone, string> = {
 };
 
 export function HomePage() {
+  const { locale } = useLocale();
   const t = useContent();
 
   return (
@@ -81,7 +84,7 @@ export function HomePage() {
 
           <Reveal delay={200}>
             <Button
-              href="/about#our-services"
+              href={localePath(locale, "/about#our-services")}
               variant="outline"
               className="mt-2 w-full justify-center md:mt-0 md:w-auto"
             >
@@ -171,6 +174,8 @@ export function HomePage() {
           </RevealText>
         </div>
       </section>
+
+      <Faq />
 
       <section className="bg-[var(--green-700)] px-6 py-12 text-white md:px-8 md:py-20 xl:px-20">
         <div className="mx-auto grid max-w-[1440px] grid-cols-1 gap-7 md:grid-cols-2 md:gap-16">

@@ -3,11 +3,22 @@ import type { IconName } from "@/components/ui/icon";
 export type Tone = "teal" | "navy" | "gold" | "green";
 
 export type Content = {
+  /** Per-locale <title> and meta description for the two page routes. */
+  meta: {
+    title: string;
+    description: string;
+    aboutTitle: string;
+    aboutDescription: string;
+  };
+  notFound: {
+    title: string;
+    body: string;
+    backHome: string;
+  };
   site: {
     name: string;
     tagline: string;
     email: string;
-    phone: string;
     address: string[];
     certifications: string;
   };
@@ -17,6 +28,11 @@ export type Content = {
     home: string;
     contactUs: string;
     language: string;
+    openMenu: string;
+    closeMenu: string;
+    mobileNavLabel: string;
+    /** Accessible name for the logo link back to the home page. */
+    homeLink: string;
   };
   footer: {
     collaborativeConsulting: string;
@@ -70,6 +86,14 @@ export type Content = {
   why: {
     title: string;
     paragraphs: string[];
+  };
+  /** Homepage FAQ. Also emitted as FAQPage JSON-LD from `app/page.tsx`. */
+  faq: {
+    title: string;
+    items: Array<{
+      question: string;
+      answer: string;
+    }>;
   };
   visionMission: {
     visionLabel: string;

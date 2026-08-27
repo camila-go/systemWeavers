@@ -90,14 +90,7 @@ export function ContactForm() {
             <p className="hidden lg:block">{t.contact.introDesktop}</p>
             <p className="lg:hidden">
               <a
-                className="link-hover transition-colors hover:underline"
-                href={`tel:${t.site.phone.replace(/\D/g, "")}`}
-              >
-                {t.site.phone}
-              </a>
-              {" · "}
-              <a
-                className="link-hover transition-colors hover:underline"
+                className="transition-colors hover:text-[var(--color-text-brand)] hover:underline"
                 href={`mailto:${t.site.email}`}
               >
                 {t.site.email}
