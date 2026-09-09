@@ -184,7 +184,7 @@ export function HomePage() {
                 lines. Below lg the number goes back beside the title, which
                 reads better than a centred stack in one narrow column. */}
             <div className="grid grid-cols-1 gap-x-6 lg:grid-cols-5 xl:gap-x-8">
-              <ol className="grid grid-cols-1 gap-x-6 sm:grid-cols-2 lg:col-span-3 lg:grid-cols-3 xl:gap-x-8">
+              <ol className="grid grid-cols-1 gap-x-6 sm:grid-cols-2 lg:col-span-3 lg:col-start-1 lg:row-start-1 lg:grid-cols-3 xl:gap-x-8">
                 {t.weaveSteps.map((step, index) => (
                   <li key={step.step} className="border-t border-white/15">
                     <Reveal
@@ -205,11 +205,23 @@ export function HomePage() {
                 ))}
               </ol>
 
+              {/* The closing line lives in this grid rather than beside it so
+                  that one mark can serve both layouts: stacked, the order is
+                  steps, closing line, mark; at lg explicit placement lifts the
+                  mark into the first row beside the steps and drops the line
+                  full-width beneath. The margin repeats the gap the parent
+                  column would have given it. */}
+              <RevealText className="mt-10 max-w-3xl border-t border-white/15 pt-8 md:mt-12 lg:col-span-5 lg:col-start-1 lg:row-start-2 xl:mt-16">
+                <p className="text-base leading-7 text-[var(--color-text-on-brand-soft)] md:text-lg">
+                  {t.weave.closing}
+                </p>
+              </RevealText>
+
               {/* Decorative — the name is already the section's heading, and
                   an alt here would only repeat it to a screen reader. */}
               <Reveal
                 delay={360}
-                className="flex items-center justify-center pt-10 lg:col-span-2 lg:col-start-4 lg:pt-0"
+                className="flex items-center justify-center pt-10 lg:col-span-2 lg:col-start-4 lg:row-start-1 lg:pt-0"
               >
                 <Image
                   src="/images/logo-mark-white.svg"
@@ -222,12 +234,6 @@ export function HomePage() {
               </Reveal>
             </div>
           </div>
-
-          <RevealText className="max-w-3xl border-t border-white/15 pt-8">
-            <p className="text-base leading-7 text-[var(--color-text-on-brand-soft)] md:text-lg">
-              {t.weave.closing}
-            </p>
-          </RevealText>
         </div>
       </section>
 
