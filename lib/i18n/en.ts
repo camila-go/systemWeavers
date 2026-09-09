@@ -5,10 +5,10 @@ export const en: Content = {
     title: "System Weavers Collaborative Consulting",
     description:
       "System Weavers partners with public health organizations, communities, and researchers to co-design and transform health systems through inclusive engagement and equity-centered design.",
-    aboutTitle: "About & Our Services",
+    aboutTitle: "Our services",
     aboutDescription:
       "Community engagement, grants management, monitoring and evaluation, communications, and language access planning for public health organizations, funders, and researchers.",
-    valuesTitle: "Vision, Mission & Values",
+    valuesTitle: "Vision, mission & values",
     valuesDescription:
       "The vision and mission behind System Weavers Collaborative Consulting, and the six core values that describe the culture we are building.",
   },
@@ -20,14 +20,14 @@ export const en: Content = {
   site: {
     name: "System Weavers",
     tagline: "COLLABORATIVE CONSULTING",
-    email: "hello@system-weavers.com",
+    email: "info@system-weavers.com",
     address: ["1234 K Street NW, Suite 500", "Washington, D.C. 20005"],
     certifications: "WOSB · DC CBE · NAICS 541820",
   },
   nav: {
     whatWeDo: "What we do",
-    about: "About",
-    values: "Mission & values",
+    about: "Our services",
+    values: "About",
     home: "Home",
     contactUs: "Contact us",
     language: "Language",
@@ -49,7 +49,7 @@ export const en: Content = {
   hero: {
     overline:
       "COMMUNITY ENGAGEMENT • EVALUATION • COMMUNICATIONS • LANGUAGE ACCESS",
-    subline: "Listening • Collaborating • Cocreating Change",
+    subline: "Listening • Collaborating • Cocreating change",
     titleLead: "Threading ",
     titleRest: "community insights into health impact.",
     body: "System Weavers Collaborative Consulting helps public health organizations, funders, and researchers design and manage community engagement, grants, evaluation, and language access programs — so equity-centered work moves from idea to lasting impact.",
@@ -62,7 +62,7 @@ export const en: Content = {
   capabilities: [
     {
       slug: "community-engagement",
-      title: "Community & Public Engagement",
+      title: "Community & public engagement",
       description:
         "Designing and facilitating engagement strategies, advisory groups, listening sessions, and community partnerships that turn lived experience into actionable insight.",
       tone: "teal",
@@ -70,7 +70,7 @@ export const en: Content = {
     },
     {
       slug: "grants-management",
-      title: "Grants Management",
+      title: "Grants management",
       description:
         "End-to-end grants management services, helping organizations design, administer, and oversee grant programs that deliver measurable impact — from program design through award close out.",
       tone: "green",
@@ -78,7 +78,7 @@ export const en: Content = {
     },
     {
       slug: "monitoring-evaluation-learning",
-      title: "Monitoring, Evaluation, & Learning",
+      title: "Monitoring, evaluation, & learning",
       description:
         "Designing evaluation frameworks, measurement strategies, and learning tools that generate actionable insights and strengthen decision-making.",
       tone: "gold",
@@ -94,7 +94,7 @@ export const en: Content = {
     },
     {
       slug: "language-access",
-      title: "Language Access Planning",
+      title: "Language access planning",
       description:
         "We help organizations move from ad hoc translation to intentional, sustainable language access.",
       tone: "green",
@@ -102,7 +102,7 @@ export const en: Content = {
     },
     {
       slug: "events-management",
-      title: "Events Management for Grants & Awards",
+      title: "Events management for grants & awards",
       description:
         "Planning and managing meetings, convenings, and conferences — from program design and logistics through participant engagement and execution.",
       tone: "teal",
@@ -126,12 +126,12 @@ export const en: Content = {
     { letter: "E", keyword: "Evaluate", detail: "+ evolve" },
   ],
   weaveSteps: [
-    { step: "01", title: "Listen & Engage" },
-    { step: "02", title: "Assess & Generate Insights" },
-    { step: "03", title: "Co-design & Build to Sustain" },
+    { step: "01", title: "Listen & engage" },
+    { step: "02", title: "Assess & generate insights" },
+    { step: "03", title: "Co-design & build to sustain" },
     { step: "04", title: "Implement" },
-    { step: "05", title: "Evaluate, Learn & Iterate" },
-    { step: "06", title: "Report Back & Report Out" },
+    { step: "05", title: "Evaluate, learn & iterate" },
+    { step: "06", title: "Report back & report out" },
   ],
   getToKnowUs: {
     title: "Get to know us",
@@ -195,7 +195,7 @@ export const en: Content = {
       {
         question: "How do I get started working with System Weavers?",
         answer:
-          "Reach out through the contact form or email hello@system-weavers.com and we’ll take it from there.",
+          "Reach out through the contact form or email info@system-weavers.com and we’ll take it from there.",
       },
     ],
   },
@@ -208,7 +208,7 @@ export const en: Content = {
       "We partner with communities to co-design and transform systems that impact health, amplify access, and promote lasting change.",
   },
   about: {
-    title: "About us",
+    title: "Our services",
     heroBody:
       "System Weavers Collaborative Consulting partners with public health organizations, communities, and researchers to co-design and transform health systems through inclusive engagement, equity-centered policies, and intentional design.",
     servicesTitle: "Our services",
@@ -225,27 +225,27 @@ export const en: Content = {
       "Our values are not intended to read like a list of traits we want employees to possess. They describe the culture System Weavers is committing to create — and how everyone is expected to contribute to it.",
     items: [
       {
-        title: "Listen with Humility",
+        title: "Listen with humility",
         body: "We listen to understand and recognize that expertise comes in many forms. We bring communities to the table because their perspectives are essential to the work, and we create space for honest conversations — even when perspectives differ or conversations are hard. We bring that same openness and humility to how we listen to our clients, partners, and one another.",
       },
       {
-        title: "Feedback Makes Us Better",
+        title: "Feedback makes us better",
         body: "We believe feedback is an investment in one another and in the quality of our work. We honor the time and thought someone has put into their work by reviewing it thoughtfully, providing useful feedback, and being open to receiving feedback ourselves. Feedback isn’t reserved for formal reviews — it’s part of how we work, learn, and support one another every day.",
       },
       {
-        title: "Own It & Follow Through",
+        title: "Own it & follow through",
         body: "We show up prepared, communicate early and clearly, and do what we say we will do. We take ownership of our commitments and don’t leave others wondering where things stand. When something changes or we need help, we speak up early.",
       },
       {
-        title: "Stay Curious & Find a Way",
+        title: "Stay curious & find a way",
         body: "We approach challenges with curiosity rather than assuming we already have the answer. We ask questions, troubleshoot, learn quickly, and look for solutions. When we identify a gap — in our knowledge, our processes, or our infrastructure — we don’t work around it forever; we invest in making it better.",
       },
       {
-        title: "Grow Yourself & Others",
+        title: "Grow yourself & others",
         body: "We believe everyone should have opportunities to learn, stretch, and level up. We share knowledge, coach one another, delegate with intention, and create opportunities for others to lead. We bring our individual strengths to the team while recognizing that our collective expertise makes us stronger.",
       },
       {
-        title: "Make the Team Better",
+        title: "Make the team better",
         body: "We care about how we contribute, not just what we accomplish. We share the load, stay level-headed when challenges arise, support one another, and bring a spirit of positivity and possibility to the work. We make room for joy, connection, and fun because doing meaningful work and enjoying the people you do it with shouldn’t be mutually exclusive.",
       },
     ],
@@ -253,7 +253,7 @@ export const en: Content = {
   services: [
     {
       slug: "community-engagement",
-      title: "Community & Public Engagement",
+      title: "Community & public engagement",
       intro: "We…",
       items: [
         "Provide strategic community and/or public engagement to transform insights into action plans",
@@ -265,7 +265,7 @@ export const en: Content = {
     },
     {
       slug: "grants-management",
-      title: "Grants Management",
+      title: "Grants management",
       items: [
         "Implement grant-funded programs and initiatives in accordance with award terms, timelines, and funder requirements.",
         "Manage day-to-day grant operations, including budget tracking, deliverable milestones, and vendor or sub-recipient coordination.",
@@ -276,7 +276,7 @@ export const en: Content = {
     },
     {
       slug: "monitoring-evaluation-learning",
-      title: "Monitoring, Evaluation, & Learning",
+      title: "Monitoring, evaluation, & learning",
       items: [
         "Design evaluation plans that meet project needs within your budget",
         "Engage the right subject matter experts to ensure feasibility and alignment of project goals and real-world needs",
@@ -301,7 +301,7 @@ export const en: Content = {
     },
     {
       slug: "language-access",
-      title: "Language Access Planning",
+      title: "Language access planning",
       items: [
         "Develop strategies to meet healthcare compliance requirements or clinical recruitment/retention goals",
         "Designed and delivered projects for linguistically diverse communities",
@@ -314,7 +314,7 @@ export const en: Content = {
     },
     {
       slug: "events-management",
-      title: "Events Management for Grants & Awards",
+      title: "Events management for grants & awards",
       items: [
         "Community engagement and education events",
         "Large-scale in-person, virtual and hybrid conferences.",

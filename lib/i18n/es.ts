@@ -5,7 +5,7 @@ export const es: Content = {
     title: "System Weavers Collaborative Consulting",
     description:
       "System Weavers se asocia con organizaciones de salud pública, comunidades e investigadores para codiseñar y transformar sistemas de salud mediante la participación inclusiva y un diseño centrado en la equidad.",
-    aboutTitle: "Nosotros y nuestros servicios",
+    aboutTitle: "Nuestros servicios",
     aboutDescription:
       "Participación comunitaria, gestión de subvenciones, evaluación, comunicaciones y planificación de acceso lingüístico para organizaciones de salud pública, financiadores e investigadores.",
     valuesTitle: "Visión, misión y valores",
@@ -20,14 +20,14 @@ export const es: Content = {
   site: {
     name: "System Weavers",
     tagline: "CONSULTORÍA COLABORATIVA",
-    email: "hello@system-weavers.com",
+    email: "info@system-weavers.com",
     address: ["1234 K Street NW, Suite 500", "Washington, D.C. 20005"],
     certifications: "WOSB · DC CBE · NAICS 541820",
   },
   nav: {
     whatWeDo: "Qué hacemos",
-    about: "Nosotros",
-    values: "Misión y valores",
+    about: "Nuestros servicios",
+    values: "Nosotros",
     home: "Inicio",
     contactUs: "Contáctanos",
     language: "Idioma",
@@ -201,7 +201,7 @@ export const es: Content = {
       {
         question: "¿Cómo empiezo a trabajar con System Weavers?",
         answer:
-          "Escríbanos a través del formulario de contacto o al correo hello@system-weavers.com y nosotras nos encargamos del resto.",
+          "Escríbanos a través del formulario de contacto o al correo info@system-weavers.com y nosotras nos encargamos del resto.",
       },
     ],
   },
@@ -214,7 +214,7 @@ export const es: Content = {
       "Nos asociamos con las comunidades para codiseñar y transformar sistemas que impactan la salud, amplían el acceso y promueven un cambio duradero.",
   },
   about: {
-    title: "Nosotros",
+    title: "Nuestros servicios",
     heroBody:
       "System Weavers Collaborative Consulting se asocia con organizaciones de salud pública, comunidades e investigadores para codiseñar y transformar sistemas de salud mediante la participación inclusiva, políticas centradas en la equidad y un diseño intencional.",
     servicesTitle: "Nuestros servicios",
