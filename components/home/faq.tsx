@@ -32,14 +32,22 @@ export function Faq() {
                   services so the two lists never affect each other. */}
               <details
                 name="faq"
-                className="service-accordion group flex flex-col gap-3 border-b border-[var(--color-border-default)] py-5"
+                className="service-accordion group flex flex-col gap-3 border-b border-[var(--color-border-default)]"
               >
+                {/* The row's padding lives on the summary, not the details:
+                    it is the thing you tap, and on the wrapper it left a
+                    26px-tall target inside a 66px-tall row. */}
                 <summary
                   onClick={keepSummaryInPlace}
-                  className="flex w-full cursor-pointer list-none items-center gap-4 text-left [&::-webkit-details-marker]:hidden">
-                  <span className="accordion-title text-rise flex-1 text-base font-semibold leading-[26px] md:text-[17px]">
+                  className="flex w-full cursor-pointer list-none items-center gap-4 py-5 text-left [&::-webkit-details-marker]:hidden">
+                  {/* A heading, matching the About accordions: these questions
+                      are the page's third level and were absent from the
+                      heading outline as spans. It also picks up the global
+                      balanced wrapping, so a question no longer drops its
+                      last word onto a line of its own. */}
+                  <h3 className="accordion-title text-rise flex-1 text-base font-semibold leading-[26px] md:text-[17px]">
                     {item.question}
-                  </span>
+                  </h3>
                   <Icon
                     name="Plus"
                     className="accordion-icon size-5 shrink-0 text-[var(--teal-500)] group-open:hidden"
@@ -50,7 +58,7 @@ export function Faq() {
                   />
                 </summary>
 
-                <p className="accordion-panel text-base leading-[26px] text-[var(--color-text-muted)]">
+                <p className="accordion-panel pb-5 text-base leading-[26px] text-[var(--color-text-muted)]">
                   {item.answer}
                 </p>
               </details>

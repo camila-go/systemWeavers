@@ -42,7 +42,7 @@ function CloseIcon({ className }: { className?: string }) {
 
 /**
  * Locale lives in the URL, so switching language is navigation, not state:
- * each option links to the current page's counterpart (`/about` ↔ `/es/about`),
+ * each option links to the current page's counterpart (`/about` â†” `/es/about`),
  * which keeps the reader in place and gives crawlers a real link to follow.
  */
 function LanguageToggle() {
@@ -51,16 +51,18 @@ function LanguageToggle() {
   const t = useContent();
   const basePath = stripLocale(pathname);
 
+  // min-h-11 is the 44px minimum touch target; the language options were ~26px
+  // tall, the smallest tap targets on the page. Padding is on the 4px grid.
   const optionClass = (code: Locale) =>
-    `rounded-full px-1 py-0.5 transition-colors duration-200 ${
+    `inline-flex min-h-11 items-center rounded-full px-2 leading-6 transition-colors duration-200 ${
       locale === code
-        ? "font-semibold leading-[18px] text-[var(--color-text-primary)]"
-        : "leading-[22px] text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)]"
+        ? "font-semibold text-[var(--color-text-primary)]"
+        : "text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)]"
     }`;
 
   return (
     <div
-      className="flex shrink-0 items-center gap-[5px] rounded-full border border-[var(--color-border-default)] px-2.5 py-[5px] text-sm transition-colors duration-200 hover:border-[var(--teal-500)]"
+      className="flex shrink-0 items-center gap-1 rounded-full border border-[var(--color-border-default)] px-2 text-sm transition-colors duration-200 hover:border-[var(--teal-500)]"
       role="group"
       aria-label={t.nav.language}
     >
@@ -120,7 +122,13 @@ function LogoLink({ large = false }: { large?: boolean }) {
   );
 }
 
-function PrimaryNavLinks({ aboutActive }: { aboutActive: boolean }) {
+function PrimaryNavLinks({
+  aboutActive,
+  valuesActive,
+}: {
+  aboutActive: boolean;
+  valuesActive: boolean;
+}) {
   const { locale } = useLocale();
   const t = useContent();
 
@@ -128,17 +136,25 @@ function PrimaryNavLinks({ aboutActive }: { aboutActive: boolean }) {
     <>
       <Link
         href={localePath(locale, "/#what-we-do")}
-        className="nav-link text-base font-bold text-[var(--color-text-primary)]"
+        className="nav-link whitespace-nowrap text-base font-bold text-[var(--color-text-primary)]"
       >
         {t.nav.whatWeDo}
       </Link>
       <Link
         href={localePath(locale, "/about")}
-        className={`nav-link text-base text-[var(--color-text-primary)] ${
+        className={`nav-link whitespace-nowrap text-base text-[var(--color-text-primary)] ${
           aboutActive ? "nav-link-active font-bold" : "font-medium"
         }`}
       >
         {t.nav.about}
+      </Link>
+      <Link
+        href={localePath(locale, "/about/values")}
+        className={`nav-link whitespace-nowrap text-base text-[var(--color-text-primary)] ${
+          valuesActive ? "nav-link-active font-bold" : "font-medium"
+        }`}
+      >
+        {t.nav.values}
       </Link>
     </>
   );
@@ -151,8 +167,11 @@ export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   // Compare against the locale-independent route so /es/about is "about" too.
+  // Exact matches, not prefixes: /about/values is its own nav item, and a
+  // prefix test would light both it and About at once.
   const basePath = stripLocale(pathname);
-  const aboutActive = basePath.startsWith("/about");
+  const aboutActive = basePath === "/about";
+  const valuesActive = basePath === "/about/values";
   const homeActive = basePath === "/";
 
   // Close on navigation, so the panel never stays open over the new page.
@@ -233,16 +252,23 @@ export function Header() {
               <Link
                 href={localePath(locale, "/")}
                 onClick={closeMenu}
-                className={`${mobileLinkClass(homeActive)} py-2.5`}
+                className={`${mobileLinkClass(homeActive)} py-3`}
               >
                 {t.nav.home}
               </Link>
               <Link
                 href={localePath(locale, "/about")}
                 onClick={closeMenu}
-                className={`${mobileLinkClass(aboutActive)} py-2.5`}
+                className={`${mobileLinkClass(aboutActive)} py-3`}
               >
                 {t.nav.about}
+              </Link>
+              <Link
+                href={localePath(locale, "/about/values")}
+                onClick={closeMenu}
+                className={`${mobileLinkClass(valuesActive)} py-3`}
+              >
+                {t.nav.values}
               </Link>
               <Button href="#contact" className="mt-4 w-full" onClick={closeMenu}>
                 {t.nav.contactUs}
@@ -251,14 +277,19 @@ export function Header() {
           ) : null}
         </div>
 
+        {/* Gaps tighten at md: three nav items, the language toggle and the
+            Contact button have to share a 768px row, and the desktop spacing
+            forced the button's label onto two lines. */}
         <div className="hidden items-center justify-between gap-4 md:flex">
           <LogoLink large />
-          <div className="flex items-center gap-7 lg:gap-9">
-            <nav className="flex items-center gap-7 lg:gap-9" aria-label="Primary">
-              <PrimaryNavLinks aboutActive={aboutActive} />
+          <div className="flex items-center gap-4 lg:gap-9">
+            <nav className="flex items-center gap-5 lg:gap-9" aria-label="Primary">
+              <PrimaryNavLinks aboutActive={aboutActive} valuesActive={valuesActive} />
             </nav>
             <LanguageToggle />
-            <Button href="#contact">{t.nav.contactUs}</Button>
+            <Button href="#contact" className="whitespace-nowrap">
+              {t.nav.contactUs}
+            </Button>
           </div>
         </div>
       </div>

@@ -3,7 +3,7 @@ import { LOCALES, localePath } from "@/lib/i18n/config";
 import { SITE_URL } from "@/lib/seo";
 
 /** Locale-independent routes; each is emitted once per locale. */
-const ROUTES = ["/", "/about"] as const;
+const ROUTES = ["/", "/about", "/about/values"] as const;
 
 /**
  * Served at /sitemap.xml — submit this URL to Google Search Console and Bing

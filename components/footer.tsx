@@ -69,6 +69,12 @@ export function Footer() {
             >
               {t.nav.about}
             </Link>
+            <Link
+              href={localePath(locale, "/about/values")}
+              className="link-hover text-[15px] leading-6 text-[var(--color-text-on-brand-soft)] hover:underline"
+            >
+              {t.nav.values}
+            </Link>
           </div>
 
           <div className="flex flex-col gap-3">

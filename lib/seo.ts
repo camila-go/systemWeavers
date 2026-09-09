@@ -97,24 +97,29 @@ export function servicesSchema(locale: Locale) {
   };
 }
 
-/** Breadcrumb trail so the About page is indexed in context, not orphaned. */
-export function breadcrumbSchema(locale: Locale, pageName: string, path: string) {
+/**
+ * Breadcrumb trail so a page is indexed in context, not orphaned. Home is
+ * prepended for you; pass the rest of the trail in order, so a nested page can
+ * declare its parent (`/about` → `/about/values`) rather than appearing to
+ * hang directly off the root.
+ */
+export function breadcrumbSchema(
+  locale: Locale,
+  trail: Array<{ name: string; path: string }>,
+) {
+  const crumbs = [
+    { name: getDictionary(locale).nav.home, path: "/" },
+    ...trail,
+  ];
+
   return {
     "@type": "BreadcrumbList",
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: getDictionary(locale).nav.home,
-        item: `${SITE_URL}${localePath(locale, "/")}`,
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: pageName,
-        item: `${SITE_URL}${localePath(locale, path)}`,
-      },
-    ],
+    itemListElement: crumbs.map((crumb, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: crumb.name,
+      item: `${SITE_URL}${localePath(locale, crumb.path)}`,
+    })),
   };
 }
 

@@ -18,11 +18,15 @@ export function GetToKnowUs() {
           {t.founders.map((person, index) => (
             <Reveal key={person.name} delay={index * 100}>
               <figure className="flex flex-col gap-6 xl:gap-8">
-                <div className="portrait-zoom relative aspect-[312/353] w-full overflow-hidden rounded-2xl bg-[var(--color-bg-tint)] md:aspect-[3/4] lg:aspect-auto lg:h-[380px] xl:h-[420px] 2xl:h-[471px]">
+                <div className="portrait-zoom relative aspect-[312/353] w-full overflow-hidden rounded-2xl bg-[var(--color-bg-tint)] md:aspect-[3/4] lg:aspect-auto lg:h-[380px] xl:h-[420px] 2xl:h-[472px]">
                   <Image
                     src={person.image}
                     alt={person.name}
                     fill
+                    // Both portraits are landscape in a portrait frame, so the
+                    // horizontal position is what does the cropping. Grisel's
+                    // frame sits slightly left of centre to keep her hair
+                    // inside the crop rather than clipping it.
                     className={
                       index === 1
                         ? "object-cover object-[30%_top]"
@@ -35,8 +39,10 @@ export function GetToKnowUs() {
                     aria-hidden
                   />
                 </div>
-                <figcaption className="flex flex-col gap-1.5 px-1 md:px-4">
-                  <p className="text-rise text-rise-d1 font-[family-name:var(--font-fraunces)] text-[28px] font-semibold leading-9 text-[var(--green-900)]">
+                <figcaption className="flex flex-col gap-2 px-1 md:px-4">
+                  {/* A name is display text, not prose: balance it so it never
+                      leaves a surname stranded on its own line. */}
+                  <p className="text-rise text-rise-d1 text-balance font-[family-name:var(--font-fraunces)] text-[28px] font-semibold leading-9 text-[var(--green-900)]">
                     {person.name}
                   </p>
                   <p className="text-overline text-[13px] font-semibold leading-4 tracking-[1.5px] text-[var(--color-text-on-accent)]">
@@ -52,7 +58,7 @@ export function GetToKnowUs() {
           <h2 className="font-[family-name:var(--font-fraunces)] text-[28px] font-semibold leading-9 text-[var(--color-text-primary)] md:text-[34px] md:leading-[44px] xl:text-[40px] xl:leading-[50px]">
             {t.getToKnowUs.title}
           </h2>
-          <div className="space-y-[22px] text-base leading-[26px] text-[var(--color-text-muted)] md:text-sm md:leading-[22px]">
+          <div className="space-y-6 text-base leading-[26px] text-[var(--color-text-muted)] md:text-sm md:leading-[22px]">
             {t.aboutCopy.map((paragraph) => (
               <p key={paragraph.slice(0, 40)}>{paragraph}</p>
             ))}

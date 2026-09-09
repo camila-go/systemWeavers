@@ -86,11 +86,15 @@ export function ContactForm() {
             {t.contact.title}
           </h2>
           <div className="text-[15px] leading-6 text-[var(--color-text-muted)] md:text-lg md:leading-7">
-            <p className="lg:hidden">{t.contact.introMobile}</p>
-            <p className="hidden lg:block">{t.contact.introDesktop}</p>
+            <p>{t.contact.intro}</p>
+            {/* The email is a fallback for anyone who would rather not use the
+                form; on wide screens the form sits alongside, so it only
+                earns its place at narrow widths. */}
             <p className="lg:hidden">
+              {/* inline-block + padding: as a bare inline link this was a
+                  17px-tall tap target, under the 24px minimum. */}
               <a
-                className="transition-colors hover:text-[var(--color-text-brand)] hover:underline"
+                className="inline-block py-2 transition-colors hover:text-[var(--color-text-brand)] hover:underline"
                 href={`mailto:${t.site.email}`}
               >
                 {t.site.email}

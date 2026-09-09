@@ -2,6 +2,23 @@ import type { IconName } from "@/components/ui/icon";
 
 export type Tone = "teal" | "navy" | "gold" | "green";
 
+/**
+ * Ties a home "What we do" card to its counterpart accordion on the About
+ * page. The two live in separate arrays that only matched by convention;
+ * sharing one union means a typo or a rename on either side fails to compile
+ * rather than silently linking a card to nothing.
+ *
+ * Also the URL fragment (`/about#grants-management`), so it stays stable
+ * across locales and is safe to link to from outside the site.
+ */
+export type ServiceSlug =
+  | "community-engagement"
+  | "grants-management"
+  | "monitoring-evaluation-learning"
+  | "communications"
+  | "language-access"
+  | "events-management";
+
 export type Content = {
   /** Per-locale <title> and meta description for the two page routes. */
   meta: {
@@ -9,6 +26,8 @@ export type Content = {
     description: string;
     aboutTitle: string;
     aboutDescription: string;
+    valuesTitle: string;
+    valuesDescription: string;
   };
   notFound: {
     title: string;
@@ -25,6 +44,7 @@ export type Content = {
   nav: {
     whatWeDo: string;
     about: string;
+    values: string;
     home: string;
     contactUs: string;
     language: string;
@@ -54,25 +74,34 @@ export type Content = {
   whatWeDo: {
     title: string;
     subtitle: string;
-    seeHow: string;
   };
   capabilities: Array<{
+    slug: ServiceSlug;
     title: string;
     description: string;
     tone: Tone;
     icon: IconName;
   }>;
-  howWeWork: {
+  /**
+   * The WEAVE Method™ section on the home page. `title` omits the ™ so the
+   * component can set it as a superscript; keep it out of the string.
+   */
+  weave: {
     title: string;
-    subtitle: string;
-    stepLabel: string;
+    tagline: string;
+    body: string;
+    acronymTitle: string;
+    practiceTitle: string;
+    closing: string;
   };
+  /** The five letters of WEAVE, in order — the acronym only works in sequence. */
+  weaveLetters: Array<{
+    letter: string;
+    term: string;
+  }>;
   weaveSteps: Array<{
     step: string;
     title: string;
-    description: string;
-    shortDescription: string;
-    icon: IconName;
   }>;
   getToKnowUs: {
     title: string;
@@ -106,16 +135,30 @@ export type Content = {
     title: string;
     heroBody: string;
     servicesTitle: string;
+    /** Label on the About page's link across to the values page. */
+    valuesLinkTitle: string;
+    valuesLinkBody: string;
+  };
+  /** `/about/values` — vision, mission, and the six core values. */
+  values: {
+    title: string;
+    heroBody: string;
+    coreValuesTitle: string;
+    coreValuesIntro: string;
+    items: Array<{
+      title: string;
+      body: string;
+    }>;
   };
   services: Array<{
+    slug: ServiceSlug;
     title: string;
     intro?: string;
     items: string[];
   }>;
   contact: {
     title: string;
-    introMobile: string;
-    introDesktop: string;
+    intro: string;
     fullName: string;
     email: string;
     message: string;

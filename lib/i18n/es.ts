@@ -8,6 +8,9 @@ export const es: Content = {
     aboutTitle: "Nosotros y nuestros servicios",
     aboutDescription:
       "Participación comunitaria, gestión de subvenciones, evaluación, comunicaciones y planificación de acceso lingüístico para organizaciones de salud pública, financiadores e investigadores.",
+    valuesTitle: "Visión, misión y valores",
+    valuesDescription:
+      "La visión y la misión detrás de System Weavers Collaborative Consulting, y los seis valores fundamentales que describen la cultura que estamos construyendo.",
   },
   notFound: {
     title: "Página no encontrada",
@@ -24,6 +27,7 @@ export const es: Content = {
   nav: {
     whatWeDo: "Qué hacemos",
     about: "Nosotros",
+    values: "Misión y valores",
     home: "Inicio",
     contactUs: "Contáctanos",
     language: "Idioma",
@@ -53,11 +57,11 @@ export const es: Content = {
   },
   whatWeDo: {
     title: "Así lo hacemos",
-    subtitle: "Cuatro servicios conectados, un enfoque colaborativo.",
-    seeHow: "Así lo hacemos",
+    subtitle: "Seis servicios conectados, un enfoque colaborativo.",
   },
   capabilities: [
     {
+      slug: "community-engagement",
       title: "Participación comunitaria y pública",
       description:
         "La participación significativa comienza con relaciones de mutua confianza, conversaciones auténticas y conexiones humanas. Esta es nuestra especialidad.",
@@ -65,6 +69,7 @@ export const es: Content = {
       icon: "HeartHandshake",
     },
     {
+      slug: "grants-management",
       title: "Gestión de subvenciones",
       description:
         "Servicios integrales de gestión de subvenciones que ayudan a las organizaciones a diseñar, administrar y supervisar programas que generan un impacto medible — desde el diseño hasta el cierre de la subvención.",
@@ -72,6 +77,7 @@ export const es: Content = {
       icon: "CircleCheck",
     },
     {
+      slug: "monitoring-evaluation-learning",
       title: "Monitoreo, evaluación y aprendizaje",
       description:
         "Generamos evidencia para respaldar decisiones que crean un impacto duradero.",
@@ -79,6 +85,7 @@ export const es: Content = {
       icon: "ChartColumn",
     },
     {
+      slug: "communications",
       title: "Comunicaciones",
       description:
         "El mensaje correcto, del mensajero correcto, en el momento correcto. Así es como las campañas de salud mueven a las personas.",
@@ -86,6 +93,7 @@ export const es: Content = {
       icon: "Megaphone",
     },
     {
+      slug: "language-access",
       title: "Planificación de acceso lingüístico",
       description:
         "Ayudamos a las organizaciones a pasar de la traducción fortuita e imprevista a un acceso lingüístico intencional y sostenible.",
@@ -93,6 +101,7 @@ export const es: Content = {
       icon: "Network",
     },
     {
+      slug: "events-management",
       title: "Gestión de eventos para subvenciones y premios",
       description:
         "Coordinamos reuniones, encuentros y conferencias vinculadas a las subvenciones que administramos.",
@@ -100,49 +109,32 @@ export const es: Content = {
       icon: "Users",
     },
   ],
-  howWeWork: {
-    title: "Así es nuestro diseño participativo",
-    subtitle:
-      "Cuatro pasos, un método colaborativo — cada proyecto sigue el mismo hilo.",
-    stepLabel: "PASO",
+  weave: {
+    // "The WEAVE Method" stays in English: it is the name of the method, and
+    // the acronym only reads in the language its letters were built from.
+    title: "El Método WEAVE",
+    tagline:
+      "No solo reunimos perspectivas. Las entretejemos en todo el trabajo.",
+    body: "El Método WEAVE es nuestro enfoque colaborativo para convertir las perspectivas de la comunidad, la evidencia y la experiencia en acción. Mantiene conectadas a las personas más cercanas al trabajo durante el diseño, la implementación, la evaluación y el aprendizaje.",
+    acronymTitle: "La base de WEAVE",
+    practiceTitle: "Cómo lo llevamos a la práctica",
+    closing:
+      "Desde la primera conversación hasta la devolución final de resultados, lo que aprendemos sigue entretejido en lo que hacemos.",
   },
+  weaveLetters: [
+    { letter: "W", term: "WITH — con la comunidad, no para ella" },
+    { letter: "E", term: "EVIDENCE — evidencia + experiencia vivida" },
+    { letter: "A", term: "ACTION — acción a partir de los hallazgos" },
+    { letter: "V", term: "VOICES — voces en todo el proceso" },
+    { letter: "E", term: "EVALUATE — evaluar + evolucionar" },
+  ],
   weaveSteps: [
-    {
-      step: "01",
-      title: "Escuchar",
-      description:
-        "Comenzamos por comprender su contexto, prioridades y las personas más afectadas por el trabajo.",
-      shortDescription:
-        "Comenzamos por comprender su contexto, prioridades y las personas más afectadas.",
-      icon: "Users",
-    },
-    {
-      step: "02",
-      title: "Conectar",
-      description:
-        "Con una mirada sistémica, examinamos las relaciones, procesos e influencias que dan forma a los resultados en su organización y más allá.",
-      shortDescription:
-        "Con una mirada sistémica, examinamos las relaciones e influencias que dan forma a los resultados.",
-      icon: "Network",
-    },
-    {
-      step: "03",
-      title: "Construir",
-      description:
-        "Juntos diseñamos e implementamos soluciones estratégicas, accionables y sensibles a las necesidades del mundo real.",
-      shortDescription:
-        "Juntos diseñamos e implementamos soluciones estratégicas y accionables.",
-      icon: "HeartHandshake",
-    },
-    {
-      step: "04",
-      title: "Sostener",
-      description:
-        "Ayudamos a crear las estructuras, capacidades y prácticas de aprendizaje necesarias para un impacto duradero.",
-      shortDescription:
-        "Construimos las estructuras y prácticas que sostienen un impacto duradero.",
-      icon: "ChartColumn",
-    },
+    { step: "01", title: "Escuchar e involucrar" },
+    { step: "02", title: "Evaluar y generar hallazgos" },
+    { step: "03", title: "Codiseñar y construir para sostener" },
+    { step: "04", title: "Implementar" },
+    { step: "05", title: "Evaluar, aprender e iterar" },
+    { step: "06", title: "Devolver y comunicar los resultados" },
   ],
   getToKnowUs: {
     title: "Conócenos",
@@ -157,7 +149,7 @@ export const es: Content = {
     {
       name: "Grisel Marie Robles-Schrader",
       role: "Fundadora",
-      image: "/images/founder-grisel.png",
+      image: "/images/founder-grisel.jpg",
     },
   ],
   aboutCopy: [
@@ -196,7 +188,7 @@ export const es: Content = {
       {
         question: "¿Cómo aborda System Weavers la participación comunitaria?",
         answer:
-          "Seguimos un método colaborativo de cuatro pasos: Escuchar (comprender el contexto y a quiénes afecta), Conectar (mapear los sistemas y las relaciones que moldean los resultados), Construir (diseñar e implementar soluciones en conjunto) y Sostener (crear estructuras y prácticas duraderas).",
+          "A través del Método WEAVE™, nuestro enfoque colaborativo: WITH (con la comunidad, no para ella), EVIDENCE (evidencia y experiencia vivida), ACTION (acción a partir de los hallazgos), VOICES (voces en todo el proceso) y EVALUATE (evaluar y evolucionar). En la práctica significa escuchar e involucrar, evaluar y generar hallazgos, codiseñar y construir para sostener, implementar, evaluar e iterar, y devolver y comunicar los resultados.",
       },
       {
         question: "¿System Weavers ofrece servicios de acceso lingüístico?",
@@ -206,7 +198,7 @@ export const es: Content = {
       {
         question: "¿Cómo empiezo a trabajar con System Weavers?",
         answer:
-          "Escríbanos a través del formulario de contacto o al correo hello@system-weavers.com — respondemos en un plazo de dos días laborales.",
+          "Escríbanos a través del formulario de contacto o al correo hello@system-weavers.com y nosotras nos encargamos del resto.",
       },
     ],
   },
@@ -223,9 +215,47 @@ export const es: Content = {
     heroBody:
       "System Weavers Collaborative Consulting se asocia con organizaciones de salud pública, comunidades e investigadores para codiseñar y transformar sistemas de salud mediante la participación inclusiva, políticas centradas en la equidad y un diseño intencional.",
     servicesTitle: "Nuestros servicios",
+    valuesLinkTitle: "Visión, misión y valores",
+    valuesLinkBody:
+      "El futuro hacia el que trabajamos, la misión que nos lleva allí y los seis valores que describen cómo trabajamos.",
+  },
+  values: {
+    title: "Visión, misión y valores",
+    heroBody:
+      "Hacia dónde trabajamos, cómo llegamos allí y la cultura que construimos en el camino.",
+    coreValuesTitle: "Nuestros valores fundamentales",
+    coreValuesIntro:
+      "Nuestros valores no pretenden leerse como una lista de cualidades que queremos que tenga el personal. Describen la cultura que System Weavers se compromete a crear — y cómo se espera que cada persona contribuya a ella.",
+    items: [
+      {
+        title: "Escuchar con humildad",
+        body: "Escuchamos para comprender y reconocemos que la experiencia toma muchas formas. Sentamos a las comunidades a la mesa porque sus perspectivas son esenciales para el trabajo, y creamos espacio para conversaciones honestas — incluso cuando las perspectivas difieren o las conversaciones son difíciles. Llevamos esa misma apertura y humildad a cómo escuchamos a nuestros clientes, aliados y a nosotras mismas.",
+      },
+      {
+        title: "La retroalimentación nos hace mejores",
+        body: "Creemos que la retroalimentación es una inversión en las personas y en la calidad de nuestro trabajo. Honramos el tiempo y el pensamiento que alguien dedicó a su trabajo revisándolo con cuidado, ofreciendo comentarios útiles y estando abiertas a recibirlos. La retroalimentación no se reserva para las evaluaciones formales — es parte de cómo trabajamos, aprendemos y nos apoyamos cada día.",
+      },
+      {
+        title: "Asumir la responsabilidad y cumplir",
+        body: "Llegamos preparadas, comunicamos con claridad y a tiempo, y hacemos lo que decimos que haremos. Asumimos nuestros compromisos y no dejamos a nadie preguntándose en qué estado están las cosas. Cuando algo cambia o necesitamos ayuda, lo decimos temprano.",
+      },
+      {
+        title: "Mantener la curiosidad y encontrar el camino",
+        body: "Abordamos los desafíos con curiosidad en lugar de suponer que ya tenemos la respuesta. Preguntamos, resolvemos problemas, aprendemos rápido y buscamos soluciones. Cuando identificamos una brecha — en nuestro conocimiento, nuestros procesos o nuestra infraestructura — no la esquivamos para siempre; invertimos en mejorarla.",
+      },
+      {
+        title: "Crecer y hacer crecer a los demás",
+        body: "Creemos que todas las personas deben tener oportunidades de aprender, expandirse y avanzar. Compartimos conocimiento, nos acompañamos, delegamos con intención y creamos oportunidades para que otras personas lideren. Aportamos nuestras fortalezas individuales al equipo reconociendo que nuestra experiencia colectiva nos hace más fuertes.",
+      },
+      {
+        title: "Hacer mejor al equipo",
+        body: "Nos importa cómo contribuimos, no solo lo que logramos. Compartimos la carga, mantenemos la calma ante los desafíos, nos apoyamos y traemos un espíritu de positividad y posibilidad al trabajo. Hacemos espacio para la alegría, la conexión y la diversión, porque hacer un trabajo significativo y disfrutar de las personas con quienes lo haces no deberían ser cosas incompatibles.",
+      },
+    ],
   },
   services: [
     {
+      slug: "community-engagement",
       title: "Participación comunitaria y pública",
       intro: "Nosotros…",
       items: [
@@ -237,6 +267,7 @@ export const es: Content = {
       ],
     },
     {
+      slug: "grants-management",
       title: "Gestión de subvenciones",
       items: [
         "Implementamos programas e iniciativas financiados por subvenciones conforme a los términos, plazos y requisitos del financiador.",
@@ -247,6 +278,7 @@ export const es: Content = {
       ],
     },
     {
+      slug: "monitoring-evaluation-learning",
       title: "Monitoreo, evaluación y aprendizaje",
       items: [
         "Diseñamos planes de evaluación que responden a las necesidades del proyecto dentro de su presupuesto",
@@ -257,6 +289,7 @@ export const es: Content = {
       ],
     },
     {
+      slug: "communications",
       title: "Comunicaciones",
       items: [
         "Comunicaciones estratégicas y planificación de campañas",
@@ -270,6 +303,7 @@ export const es: Content = {
       ],
     },
     {
+      slug: "language-access",
       title: "Planificación de acceso lingüístico",
       items: [
         "Desarrollamos estrategias para cumplir requisitos de cumplimiento en salud o metas de reclutamiento/retención clínica",
@@ -282,6 +316,7 @@ export const es: Content = {
       ],
     },
     {
+      slug: "events-management",
       title: "Gestión de eventos para subvenciones y premios",
       items: [
         "Eventos de participación comunitaria y educación",
@@ -293,20 +328,18 @@ export const es: Content = {
   ],
   contact: {
     title: "Iniciar una conversación",
-    introMobile: "Responderemos en un plazo de dos días laborales.",
-    introDesktop:
-      "Cuéntenos sus objetivos y responderemos en un plazo de dos días laborales.",
+    intro: "Cuéntenos sus objetivos.",
     fullName: "Nombre completo (obligatorio)",
     email: "Correo electrónico (obligatorio)",
     message: "¿Cómo podemos ayudar? (obligatorio)",
     placeholderName: "Jane Rivera",
     placeholderEmail: "jane@organizacion.org",
-    placeholderMessage: "Cuéntenos un poco sobre su proyecto u objetivo político…",
+    placeholderMessage: "Cuéntenos un poco sobre su proyecto…",
     consent:
       "Al proporcionar su información, usted acepta recibir mensajes por correo electrónico de System Weavers.",
     submit: "Acepto conectar con los Weavers",
     sending: "Enviando…",
-    success: "Gracias — responderemos en un plazo de dos días laborales.",
+    success: "Gracias — hemos recibido su mensaje y le responderemos pronto.",
     networkError: "Error de red. Inténtelo de nuevo.",
     serverError:
       "No pudimos enviar su mensaje en este momento. Inténtelo de nuevo o escríbanos a {email}.",

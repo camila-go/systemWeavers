@@ -8,6 +8,9 @@ export const en: Content = {
     aboutTitle: "About & Our Services",
     aboutDescription:
       "Community engagement, grants management, monitoring and evaluation, communications, and language access planning for public health organizations, funders, and researchers.",
+    valuesTitle: "Vision, Mission & Values",
+    valuesDescription:
+      "The vision and mission behind System Weavers Collaborative Consulting, and the six core values that describe the culture we are building.",
   },
   notFound: {
     title: "Page not found",
@@ -24,6 +27,7 @@ export const en: Content = {
   nav: {
     whatWeDo: "What we do",
     about: "About",
+    values: "Mission & values",
     home: "Home",
     contactUs: "Contact us",
     language: "Language",
@@ -53,11 +57,11 @@ export const en: Content = {
   },
   whatWeDo: {
     title: "What we do",
-    subtitle: "Four connected services, one collaborative approach.",
-    seeHow: "See how we do it",
+    subtitle: "Six connected services, one collaborative approach.",
   },
   capabilities: [
     {
+      slug: "community-engagement",
       title: "Community & Public Engagement",
       description:
         "Meaningful engagement starts with trusted relationships, authentic conversation, and human connection — our specialty.",
@@ -65,6 +69,7 @@ export const en: Content = {
       icon: "HeartHandshake",
     },
     {
+      slug: "grants-management",
       title: "Grants Management",
       description:
         "End-to-end grants management services, helping organizations design, administer, and oversee grant programs that deliver measurable impact — from program design through award close out.",
@@ -72,6 +77,7 @@ export const en: Content = {
       icon: "CircleCheck",
     },
     {
+      slug: "monitoring-evaluation-learning",
       title: "Monitoring, Evaluation, & Learning",
       description:
         "Generating evidence to support decision-making that creates a lasting impact.",
@@ -79,6 +85,7 @@ export const en: Content = {
       icon: "ChartColumn",
     },
     {
+      slug: "communications",
       title: "Communications",
       description:
         "The right message, from the right messenger, at the right moment. That's how health campaigns move people.",
@@ -86,6 +93,7 @@ export const en: Content = {
       icon: "Megaphone",
     },
     {
+      slug: "language-access",
       title: "Language Access Planning",
       description:
         "We help organizations move from ad hoc translation to intentional, sustainable language access.",
@@ -93,6 +101,7 @@ export const en: Content = {
       icon: "Network",
     },
     {
+      slug: "events-management",
       title: "Events Management for Grants & Awards",
       description:
         "We coordinate meetings, convenings, and conferences tied to grants we administer.",
@@ -100,49 +109,29 @@ export const en: Content = {
       icon: "Users",
     },
   ],
-  howWeWork: {
-    title: "How we co-design",
-    subtitle:
-      "Four steps, one collaborative method — every engagement follows the same thread.",
-    stepLabel: "STEP",
+  weave: {
+    title: "The WEAVE Method",
+    tagline: "We don’t just gather perspectives. We weave them through the work.",
+    body: "The WEAVE Method is our collaborative approach to turning community perspectives, evidence, and expertise into action. It keeps the people closest to the work connected throughout design, implementation, evaluation, and learning.",
+    acronymTitle: "Grounded in WEAVE",
+    practiceTitle: "How we put it into practice",
+    closing:
+      "From the first conversation to the final report-back, what we learn stays woven into what we do.",
   },
+  weaveLetters: [
+    { letter: "W", term: "WITH, not for" },
+    { letter: "E", term: "EVIDENCE + lived experience" },
+    { letter: "A", term: "ACTION from insight" },
+    { letter: "V", term: "VOICES throughout" },
+    { letter: "E", term: "EVALUATE + evolve" },
+  ],
   weaveSteps: [
-    {
-      step: "01",
-      title: "Listen",
-      description:
-        "We begin by understanding your context, priorities, and the people who are most affected by the work.",
-      shortDescription:
-        "We start by understanding your context, priorities, and the people most affected.",
-      icon: "Users",
-    },
-    {
-      step: "02",
-      title: "Connect",
-      description:
-        "Using a systems lens, we examine the relationships, processes, and influences that shape outcomes across your organization and beyond.",
-      shortDescription:
-        "Using a systems lens, we examine the relationships and influences that shape outcomes.",
-      icon: "Network",
-    },
-    {
-      step: "03",
-      title: "Build",
-      description:
-        "Together, we design and implement solutions that are strategic, actionable, and responsive to real-world needs.",
-      shortDescription:
-        "Together, we design and implement strategic, actionable solutions.",
-      icon: "HeartHandshake",
-    },
-    {
-      step: "04",
-      title: "Sustain",
-      description:
-        "We help create the structures, capabilities, and learning practices needed to support lasting impact.",
-      shortDescription:
-        "We build the structures and practices that support lasting impact.",
-      icon: "ChartColumn",
-    },
+    { step: "01", title: "Listen & Engage" },
+    { step: "02", title: "Assess & Generate Insights" },
+    { step: "03", title: "Co-design & Build to Sustain" },
+    { step: "04", title: "Implement" },
+    { step: "05", title: "Evaluate, Learn & Iterate" },
+    { step: "06", title: "Report Back & Report Out" },
   ],
   getToKnowUs: {
     title: "Get to know us",
@@ -157,7 +146,7 @@ export const en: Content = {
     {
       name: "Grisel Marie Robles-Schrader",
       role: "Founder",
-      image: "/images/founder-grisel.png",
+      image: "/images/founder-grisel.jpg",
     },
   ],
   aboutCopy: [
@@ -196,7 +185,7 @@ export const en: Content = {
       {
         question: "How does System Weavers approach community engagement?",
         answer:
-          "We follow a four-step collaborative method: Listen (understand context and who's affected), Connect (map the systems and relationships shaping outcomes), Build (design and implement solutions together), and Sustain (build lasting structures and practices).",
+          "Through the WEAVE Method™, our collaborative approach: WITH, not for; EVIDENCE plus lived experience; ACTION from insight; VOICES throughout; and EVALUATE and evolve. In practice that means listening and engaging, assessing and generating insights, co-designing and building to sustain, implementing, evaluating and iterating, and reporting back and reporting out.",
       },
       {
         question: "Does System Weavers offer language access services?",
@@ -206,7 +195,7 @@ export const en: Content = {
       {
         question: "How do I get started working with System Weavers?",
         answer:
-          "Reach out through the contact form or email hello@system-weavers.com — we respond within two business days.",
+          "Reach out through the contact form or email hello@system-weavers.com and we’ll take it from there.",
       },
     ],
   },
@@ -223,9 +212,47 @@ export const en: Content = {
     heroBody:
       "System Weavers Collaborative Consulting partners with public health organizations, communities, and researchers to co-design and transform health systems through inclusive engagement, equity-centered policies, and intentional design.",
     servicesTitle: "Our services",
+    valuesLinkTitle: "Vision, mission & values",
+    valuesLinkBody:
+      "The future we are working toward, the mission that gets us there, and the six values that describe how we work.",
+  },
+  values: {
+    title: "Vision, mission & values",
+    heroBody:
+      "What we are working toward, how we get there, and the culture we are building along the way.",
+    coreValuesTitle: "Our core values",
+    coreValuesIntro:
+      "Our values are not intended to read like a list of traits we want employees to possess. They describe the culture System Weavers is committing to create — and how everyone is expected to contribute to it.",
+    items: [
+      {
+        title: "Listen with Humility",
+        body: "We listen to understand and recognize that expertise comes in many forms. We bring communities to the table because their perspectives are essential to the work, and we create space for honest conversations — even when perspectives differ or conversations are hard. We bring that same openness and humility to how we listen to our clients, partners, and one another.",
+      },
+      {
+        title: "Feedback Makes Us Better",
+        body: "We believe feedback is an investment in one another and in the quality of our work. We honor the time and thought someone has put into their work by reviewing it thoughtfully, providing useful feedback, and being open to receiving feedback ourselves. Feedback isn’t reserved for formal reviews — it’s part of how we work, learn, and support one another every day.",
+      },
+      {
+        title: "Own It & Follow Through",
+        body: "We show up prepared, communicate early and clearly, and do what we say we will do. We take ownership of our commitments and don’t leave others wondering where things stand. When something changes or we need help, we speak up early.",
+      },
+      {
+        title: "Stay Curious & Find a Way",
+        body: "We approach challenges with curiosity rather than assuming we already have the answer. We ask questions, troubleshoot, learn quickly, and look for solutions. When we identify a gap — in our knowledge, our processes, or our infrastructure — we don’t work around it forever; we invest in making it better.",
+      },
+      {
+        title: "Grow Yourself & Others",
+        body: "We believe everyone should have opportunities to learn, stretch, and level up. We share knowledge, coach one another, delegate with intention, and create opportunities for others to lead. We bring our individual strengths to the team while recognizing that our collective expertise makes us stronger.",
+      },
+      {
+        title: "Make the Team Better",
+        body: "We care about how we contribute, not just what we accomplish. We share the load, stay level-headed when challenges arise, support one another, and bring a spirit of positivity and possibility to the work. We make room for joy, connection, and fun because doing meaningful work and enjoying the people you do it with shouldn’t be mutually exclusive.",
+      },
+    ],
   },
   services: [
     {
+      slug: "community-engagement",
       title: "Community & Public Engagement",
       intro: "We…",
       items: [
@@ -237,6 +264,7 @@ export const en: Content = {
       ],
     },
     {
+      slug: "grants-management",
       title: "Grants Management",
       items: [
         "Implement grant-funded programs and initiatives in accordance with award terms, timelines, and funder requirements.",
@@ -247,6 +275,7 @@ export const en: Content = {
       ],
     },
     {
+      slug: "monitoring-evaluation-learning",
       title: "Monitoring, Evaluation, & Learning",
       items: [
         "Design evaluation plans that meet project needs within your budget",
@@ -257,6 +286,7 @@ export const en: Content = {
       ],
     },
     {
+      slug: "communications",
       title: "Communications",
       items: [
         "Strategic communications and campaign planning",
@@ -270,6 +300,7 @@ export const en: Content = {
       ],
     },
     {
+      slug: "language-access",
       title: "Language Access Planning",
       items: [
         "Develop strategies to meet healthcare compliance requirements or clinical recruitment/retention goals",
@@ -282,6 +313,7 @@ export const en: Content = {
       ],
     },
     {
+      slug: "events-management",
       title: "Events Management for Grants & Awards",
       items: [
         "Community engagement and education events",
@@ -293,20 +325,18 @@ export const en: Content = {
   ],
   contact: {
     title: "Start a conversation",
-    introMobile: "We’ll respond within two business days.",
-    introDesktop:
-      "Tell us about your goals and we’ll respond within two business days.",
+    intro: "Tell us about your goals.",
     fullName: "Full name (required)",
     email: "Email address (required)",
     message: "How can we help? (required)",
     placeholderName: "Jane Rivera",
     placeholderEmail: "jane@organization.org",
-    placeholderMessage: "Tell us a bit about your project or policy goal…",
+    placeholderMessage: "Tell us a bit about your project…",
     consent:
       "By providing your information, you consent to receive messages by email, from System Weavers.",
     submit: "I accept, connect with the Weavers",
     sending: "Sending…",
-    success: "Thank you — we’ll respond within two business days.",
+    success: "Thank you — we’ve received your message and will be in touch.",
     networkError: "Network error. Please try again.",
     serverError:
       "We couldn’t send your message right now. Please try again, or email us at {email}.",

@@ -61,6 +61,10 @@ export default async function LocaleLayout({
     <html
       lang={locale}
       className={`${fraunces.variable} ${publicSans.variable} h-full antialiased`}
+      // globals.css sets `scroll-behavior: smooth`; Next asks for this so it
+      // knows the smooth scroll is intentional and stops warning about route
+      // transitions landing mid-animation.
+      data-scroll-behavior="smooth"
       suppressHydrationWarning
     >
       <body className="flex min-h-full flex-col font-sans" suppressHydrationWarning>

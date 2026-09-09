@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { AboutPage } from "@/components/about/about-page";
+import { ValuesPage } from "@/components/about/values-page";
 import { isLocale, localePath } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 import {
@@ -8,7 +8,6 @@ import {
   alternatesFor,
   breadcrumbSchema,
   organizationSchema,
-  servicesSchema,
 } from "@/lib/seo";
 
 export async function generateMetadata({
@@ -21,9 +20,9 @@ export async function generateMetadata({
   const t = getDictionary(locale);
 
   return {
-    title: t.meta.aboutTitle,
-    description: t.meta.aboutDescription,
-    alternates: alternatesFor(locale, "/about"),
+    title: t.meta.valuesTitle,
+    description: t.meta.valuesDescription,
+    alternates: alternatesFor(locale, "/about/values"),
   };
 }
 
@@ -35,26 +34,43 @@ export default async function Page({
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
   const t = getDictionary(locale);
+  const pageUrl = `${SITE_URL}${localePath(locale, "/about/values")}`;
 
-  // Organization is repeated here rather than only on the home page so this
-  // page stands on its own as an entity source — the services reference it by
-  // @id, and a crawler landing here shouldn't have to resolve that elsewhere.
+  // The values themselves go in as a DefinedTermSet: they are named concepts
+  // with definitions, which is exactly what an answer engine needs to quote
+  // one back ("what are System Weavers' values?") rather than paraphrasing
+  // the whole page.
   const schema = {
     "@context": "https://schema.org",
     "@graph": [
       organizationSchema(locale),
       {
         "@type": "AboutPage",
-        "@id": `${SITE_URL}${localePath(locale, "/about")}`,
-        name: t.about.title,
-        description: t.meta.aboutDescription,
+        "@id": pageUrl,
+        name: t.values.title,
+        description: t.meta.valuesDescription,
         inLanguage: locale,
         isPartOf: { "@id": `${SITE_URL}/#website` },
         about: { "@id": `${SITE_URL}/#organization` },
-        mainEntity: { "@id": `${SITE_URL}${localePath(locale, "/about")}#services` },
+        mainEntity: { "@id": `${pageUrl}#core-values` },
       },
-      servicesSchema(locale),
-      breadcrumbSchema(locale, [{ name: t.about.title, path: "/about" }]),
+      {
+        "@type": "DefinedTermSet",
+        "@id": `${pageUrl}#core-values`,
+        name: t.values.coreValuesTitle,
+        description: t.values.coreValuesIntro,
+        inLanguage: locale,
+        hasDefinedTerm: t.values.items.map((value) => ({
+          "@type": "DefinedTerm",
+          name: value.title,
+          description: value.body,
+          inDefinedTermSet: { "@id": `${pageUrl}#core-values` },
+        })),
+      },
+      breadcrumbSchema(locale, [
+        { name: t.about.title, path: "/about" },
+        { name: t.values.title, path: "/about/values" },
+      ]),
     ],
   };
 
@@ -67,7 +83,7 @@ export default async function Page({
           __html: JSON.stringify(schema).replace(/</g, "\\u003c"),
         }}
       />
-      <AboutPage />
+      <ValuesPage />
     </>
   );
 }

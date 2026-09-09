@@ -24,6 +24,6 @@ export default defineConfig({
         "design-system/shims/next-navigation.ts",
       ),
     };
-    options.loader = { ...options.loader, ".png": "dataurl" };
+    options.loader = { ...options.loader, ".png": "dataurl", ".jpg": "dataurl" };
   },
 });

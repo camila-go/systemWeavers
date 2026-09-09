@@ -68,6 +68,43 @@ body {
   font-family: var(--font-public-sans), system-ui, sans-serif;
 }
 
+/*
+ * Widows and orphans, handled by the layout engine rather than by hand.
+ *
+ * `balance` evens out the lines so nothing short is left stranded at the end.
+ * The spec caps it at a handful of lines and browsers ignore it beyond that,
+ * which is why it goes on headings and list items — bounded text — rather
+ * than on running prose. `pretty` is the lighter rule for paragraphs: it asks
+ * the engine not to leave a one-word last line, and engines that have not
+ * implemented it yet simply wrap as before.
+ *
+ * Both are declarative, so they re-solve at every viewport width — no
+ * hardcoded <br> and no non-breaking spaces, which lock a line break to one
+ * width and break at every other.
+ *
+ * These live in @layer base on purpose. Unlayered rules outrank everything in
+ * Tailwind's layers, so at the top level they would silently beat `text-balance`
+ * and `text-pretty` on individual elements; in the base layer they are defaults
+ * a utility can still override.
+ */
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4,
+  li,
+  blockquote,
+  figcaption {
+    text-wrap: balance;
+  }
+
+  p,
+  dd,
+  label {
+    text-wrap: pretty;
+  }
+}
+
 ::selection {
   background: var(--gold-100);
   color: var(--navy-900);
@@ -336,6 +373,15 @@ body {
 .nav-link {
   position: relative;
   transition: color var(--motion-duration-fast) ease;
+}
+
+/* A 24px line of text is a small thing to hit on a touchscreen. This extends
+   the hit area to 44px without padding, which would have dragged the hover
+   underline (positioned from the bottom edge) away from the text with it. */
+.nav-link::before {
+  content: "";
+  position: absolute;
+  inset: -10px 0;
 }
 
 .nav-link::after {
