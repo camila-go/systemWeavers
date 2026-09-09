@@ -99,7 +99,7 @@ export function HomePage() {
         className="scroll-mt-24 bg-[var(--navy-800)] px-6 py-12 text-white md:px-16 md:py-[72px] xl:px-20 xl:py-28 2xl:px-[240px]"
       >
         <div className="mx-auto flex max-w-[1440px] flex-col gap-10 md:gap-12 xl:gap-16">
-          <RevealText className="mx-auto flex max-w-3xl flex-col gap-4 text-center">
+          <RevealText className="flex max-w-3xl flex-col gap-4">
             <h2 className="font-[family-name:var(--font-fraunces)] text-[28px] font-semibold leading-9 text-[var(--navy-100)] md:text-[34px] md:leading-[44px] xl:text-[40px] xl:leading-[50px]">
               {t.weave.title}
               {/* Marked once, on the most prominent use — the convention for a
@@ -153,9 +153,14 @@ export function HomePage() {
                     >
                       {entry.letter}
                     </span>
-                    <span className="text-balance text-base leading-[26px] text-[var(--navy-100)]">
-                      {entry.term}
-                    </span>
+                    <div className="flex flex-col gap-1">
+                      <h4 className="text-base font-semibold uppercase leading-6 tracking-[1.5px] text-[var(--color-text-on-brand)]">
+                        {entry.keyword}
+                      </h4>
+                      <p className="text-balance text-[15px] leading-6 text-[var(--navy-100)]">
+                        {entry.detail}
+                      </p>
+                    </div>
                   </Reveal>
                 </li>
               ))}
@@ -190,7 +195,7 @@ export function HomePage() {
             </ol>
           </div>
 
-          <RevealText className="mx-auto max-w-3xl border-t border-white/15 pt-8 text-center">
+          <RevealText className="max-w-3xl border-t border-white/15 pt-8">
             <p className="text-base leading-7 text-[var(--color-text-on-brand-soft)] md:text-lg">
               {t.weave.closing}
             </p>

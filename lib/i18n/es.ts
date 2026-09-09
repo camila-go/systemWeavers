@@ -121,12 +121,15 @@ export const es: Content = {
     closing:
       "Desde la primera conversación hasta la devolución final de resultados, lo que aprendemos sigue entretejido en lo que hacemos.",
   },
+  // The keywords stay in English: they are what the letters stand for, and
+  // translating them would leave the acronym spelling nothing. The line under
+  // each one carries the meaning in Spanish.
   weaveLetters: [
-    { letter: "W", term: "WITH — con la comunidad, no para ella" },
-    { letter: "E", term: "EVIDENCE — evidencia + experiencia vivida" },
-    { letter: "A", term: "ACTION — acción a partir de los hallazgos" },
-    { letter: "V", term: "VOICES — voces en todo el proceso" },
-    { letter: "E", term: "EVALUATE — evaluar + evolucionar" },
+    { letter: "W", keyword: "With", detail: "con la comunidad, no para ella" },
+    { letter: "E", keyword: "Evidence", detail: "evidencia + experiencia vivida" },
+    { letter: "A", keyword: "Action", detail: "acción a partir de los hallazgos" },
+    { letter: "V", keyword: "Voices", detail: "voces en todo el proceso" },
+    { letter: "E", keyword: "Evaluate", detail: "evaluar + evolucionar" },
   ],
   weaveSteps: [
     { step: "01", title: "Escuchar e involucrar" },

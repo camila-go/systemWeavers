@@ -119,11 +119,11 @@ export const en: Content = {
       "From the first conversation to the final report-back, what we learn stays woven into what we do.",
   },
   weaveLetters: [
-    { letter: "W", term: "WITH, not for" },
-    { letter: "E", term: "EVIDENCE + lived experience" },
-    { letter: "A", term: "ACTION from insight" },
-    { letter: "V", term: "VOICES throughout" },
-    { letter: "E", term: "EVALUATE + evolve" },
+    { letter: "W", keyword: "With", detail: "not for" },
+    { letter: "E", keyword: "Evidence", detail: "+ lived experience" },
+    { letter: "A", keyword: "Action", detail: "from insight" },
+    { letter: "V", keyword: "Voices", detail: "throughout" },
+    { letter: "E", keyword: "Evaluate", detail: "+ evolve" },
   ],
   weaveSteps: [
     { step: "01", title: "Listen & Engage" },

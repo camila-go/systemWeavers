@@ -97,7 +97,9 @@ export type Content = {
   /** The five letters of WEAVE, in order — the acronym only works in sequence. */
   weaveLetters: Array<{
     letter: string;
-    term: string;
+    /** The word the letter stands for, set as its own subheading. */
+    keyword: string;
+    detail: string;
   }>;
   weaveSteps: Array<{
     step: string;
