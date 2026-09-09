@@ -139,17 +139,15 @@ export function HomePage() {
                   key={`${entry.letter}-${index}`}
                   className="border-t border-white/15"
                 >
-                  {/* Stacked and centred in the five-across band, so each
-                      letter sits over the middle of the line it labels and
-                      every cell has the same gap between the two. Below lg
-                      the acrostic runs down the left edge instead, where
-                      centring would break the W-E-A-V-E alignment. */}
+                  {/* One centred stack at every width — letter, keyword,
+                      detail — so a phone gets the same composition as the
+                      five-across band rather than a differently-shaped row. */}
                   <Reveal
                     delay={index * 60}
-                    className="flex items-baseline gap-4 py-4 lg:h-full lg:flex-col lg:items-center lg:gap-3 lg:py-6 lg:text-center"
+                    className="flex h-full flex-col items-center gap-3 py-5 text-center lg:py-6"
                   >
                     <span
-                      className="w-10 shrink-0 font-[family-name:var(--font-fraunces)] text-[40px] font-bold leading-none text-[var(--color-text-accent-on-dark)] lg:w-auto lg:text-[52px]"
+                      className="weave-letter font-[family-name:var(--font-fraunces)] text-[44px] font-bold leading-none text-[var(--color-text-accent-on-dark)] lg:text-[52px]"
                       aria-hidden
                     >
                       {entry.letter}
@@ -182,7 +180,7 @@ export function HomePage() {
                     className="flex h-full items-baseline gap-4 py-4 md:py-6"
                   >
                     <span
-                      className="w-10 shrink-0 font-[family-name:var(--font-fraunces)] text-xl font-semibold leading-7 text-[var(--color-text-accent-on-dark)]"
+                      className="text-rise w-10 shrink-0 font-[family-name:var(--font-fraunces)] text-xl font-semibold leading-7 text-[var(--color-text-accent-on-dark)]"
                       aria-hidden
                     >
                       {step.step}

@@ -309,6 +309,29 @@ body {
     both;
 }
 
+/*
+ * WEAVE letters. Each one rises and settles a beat after the last, so the
+ * acronym spells itself out on arrival rather than appearing all at once.
+ * The delay comes from the Reveal's own per-item offset, which keeps the
+ * order of the letters and the order of the animation the same thing.
+ */
+@keyframes weave-letter-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.88);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.reveal.reveal-init.reveal-visible .weave-letter {
+  animation: weave-letter-in calc(var(--motion-duration-slow) + 120ms)
+    var(--motion-ease-out) both;
+  animation-delay: var(--text-stagger-offset, 0ms);
+}
+
 /* Hero title line split */
 .hero-line {
   display: inline-block;
@@ -567,7 +590,8 @@ body {
   .hero-line,
   .text-rise,
   .text-overline,
-  .text-emphasis {
+  .text-emphasis,
+  .weave-letter {
     opacity: 1;
     transform: none;
     animation: none;
