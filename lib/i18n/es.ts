@@ -64,7 +64,7 @@ export const es: Content = {
       slug: "community-engagement",
       title: "Participación comunitaria y pública",
       description:
-        "La participación significativa comienza con relaciones de mutua confianza, conversaciones auténticas y conexiones humanas. Esta es nuestra especialidad.",
+        "Diseñamos y facilitamos estrategias de participación, consejos asesores, sesiones de escucha y alianzas comunitarias que convierten la experiencia vivida en hallazgos accionables.",
       tone: "teal",
       icon: "HeartHandshake",
     },
@@ -80,7 +80,7 @@ export const es: Content = {
       slug: "monitoring-evaluation-learning",
       title: "Monitoreo, evaluación y aprendizaje",
       description:
-        "Generamos evidencia para respaldar decisiones que crean un impacto duradero.",
+        "Diseñamos marcos de evaluación, estrategias de medición y herramientas de aprendizaje que generan hallazgos accionables y fortalecen la toma de decisiones.",
       tone: "gold",
       icon: "ChartColumn",
     },
@@ -88,7 +88,7 @@ export const es: Content = {
       slug: "communications",
       title: "Comunicaciones",
       description:
-        "El mensaje correcto, del mensajero correcto, en el momento correcto. Así es como las campañas de salud mueven a las personas.",
+        "Desarrollamos mensajes centrados en la audiencia, estrategias de comunicación y materiales que conectan el mensaje correcto con el mensajero correcto en el momento correcto.",
       tone: "gold",
       icon: "Megaphone",
     },
@@ -104,7 +104,7 @@ export const es: Content = {
       slug: "events-management",
       title: "Gestión de eventos para subvenciones y premios",
       description:
-        "Coordinamos reuniones, encuentros y conferencias vinculadas a las subvenciones que administramos.",
+        "Planificamos y gestionamos reuniones, encuentros y conferencias — desde el diseño del programa y la logística hasta la participación de las personas asistentes y la ejecución.",
       tone: "teal",
       icon: "Users",
     },

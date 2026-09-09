@@ -71,7 +71,7 @@ export function HomePage() {
                     the accordion's id on About, so it opens on arrival. */}
                 <Link
                   href={localePath(locale, `/about#${cap.slug}`)}
-                  className="group capability-card flex h-full w-full flex-col gap-4 rounded-2xl border border-[var(--color-border-default)] bg-white p-8 transition-colors hover:border-[var(--color-border-brand)] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-2 focus-visible:outline-[var(--color-focus)]"
+                  className="group capability-card flex h-full w-full flex-col gap-4 rounded-2xl border border-[var(--color-border-default)] bg-white p-6 transition-colors xl:p-8 hover:border-[var(--color-border-brand)] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-2 focus-visible:outline-[var(--color-focus)]"
                 >
                   <span
                     className={`capability-icon inline-flex w-fit rounded-xl p-4 ${toneStyles[cap.tone]}`}
@@ -81,10 +81,11 @@ export function HomePage() {
                   <h3 className="text-rise text-rise-d1 font-[family-name:var(--font-fraunces)] text-[28px] font-semibold leading-9 text-[var(--color-text-primary)] transition-colors group-hover:text-[var(--color-text-brand)]">
                     {cap.title}
                   </h3>
-                  {/* Card copy is short enough for balance to apply at every
-                      width, which keeps the six cards' text blocks even and
-                      stops the longer Spanish strings ending on one word. */}
-                  <p className="text-rise text-rise-d2 text-balance text-base leading-[26px] text-[var(--color-text-muted)]">
+                  {/* 15/24 rather than 16/26: the descriptions run long enough
+                      that at the larger setting they passed six lines in the
+                      card measure, which is where the browser gives up on
+                      balancing them and strands the last word. */}
+                  <p className="text-rise text-rise-d2 text-balance text-[15px] leading-6 text-[var(--color-text-muted)]">
                     {cap.description}
                   </p>
                 </Link>

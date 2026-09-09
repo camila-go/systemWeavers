@@ -64,7 +64,7 @@ export const en: Content = {
       slug: "community-engagement",
       title: "Community & Public Engagement",
       description:
-        "Meaningful engagement starts with trusted relationships, authentic conversation, and human connection — our specialty.",
+        "Designing and facilitating engagement strategies, advisory groups, listening sessions, and community partnerships that turn lived experience into actionable insight.",
       tone: "teal",
       icon: "HeartHandshake",
     },
@@ -80,7 +80,7 @@ export const en: Content = {
       slug: "monitoring-evaluation-learning",
       title: "Monitoring, Evaluation, & Learning",
       description:
-        "Generating evidence to support decision-making that creates a lasting impact.",
+        "Designing evaluation frameworks, measurement strategies, and learning tools that generate actionable insights and strengthen decision-making.",
       tone: "gold",
       icon: "ChartColumn",
     },
@@ -88,7 +88,7 @@ export const en: Content = {
       slug: "communications",
       title: "Communications",
       description:
-        "The right message, from the right messenger, at the right moment. That's how health campaigns move people.",
+        "Developing audience-centered messaging, communications strategies, and materials that connect the right message with the right messenger at the right moment.",
       tone: "gold",
       icon: "Megaphone",
     },
@@ -104,7 +104,7 @@ export const en: Content = {
       slug: "events-management",
       title: "Events Management for Grants & Awards",
       description:
-        "We coordinate meetings, convenings, and conferences tied to grants we administer.",
+        "Planning and managing meetings, convenings, and conferences — from program design and logistics through participant engagement and execution.",
       tone: "teal",
       icon: "Users",
     },
