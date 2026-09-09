@@ -112,7 +112,7 @@ export const en: Content = {
   weave: {
     title: "The WEAVE Method",
     tagline: "We don’t just gather perspectives. We weave them through the work.",
-    body: "The WEAVE Method is our collaborative approach to turning community perspectives, evidence, and expertise into action. It keeps the people closest to the work connected throughout design, implementation, evaluation, and learning.",
+    body: "The WEAVE Method™ is our collaborative approach to turning community perspectives, evidence, and expertise into action. It keeps the people closest to the work connected throughout design, implementation, evaluation, and learning.",
     acronymTitle: "Grounded in WEAVE",
     practiceTitle: "How we put it into practice",
     closing:

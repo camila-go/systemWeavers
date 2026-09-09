@@ -90,7 +90,12 @@ export function ValuesPage() {
         className="scroll-mt-24 bg-[var(--color-bg-page)] px-6 py-12 md:px-10 md:py-16 xl:px-20 xl:py-28 2xl:px-[240px]"
       >
         <div className="mx-auto flex w-full max-w-[1440px] flex-col gap-8">
-          <RevealText className="flex max-w-3xl flex-col gap-4">
+          {/* From lg the heading block is held to one column of the list
+              below, so the intro's last line stops where the first value's
+              does instead of running on under the second column. Below lg it
+              keeps the wider measure — a column there is about 450px, and the
+              two-up grid has not yet split the row. */}
+          <RevealText className="flex max-w-3xl flex-col gap-4 lg:max-w-[calc((100%-3rem)/2)]">
             <h2 className="font-[family-name:var(--font-fraunces)] text-[34px] font-semibold leading-[44px] text-[var(--color-text-primary)] md:text-[40px] md:leading-[50px]">
               {t.values.coreValuesTitle}
             </h2>

@@ -115,7 +115,7 @@ export const es: Content = {
     title: "El Método WEAVE",
     tagline:
       "No solo reunimos perspectivas. Las entretejemos en todo el trabajo.",
-    body: "El Método WEAVE es nuestro enfoque colaborativo para convertir las perspectivas de la comunidad, la evidencia y la experiencia en acción. Mantiene conectadas a las personas más cercanas al trabajo durante el diseño, la implementación, la evaluación y el aprendizaje.",
+    body: "El Método WEAVE™ es nuestro enfoque colaborativo para convertir las perspectivas de la comunidad, la evidencia y la experiencia en acción. Mantiene conectadas a las personas más cercanas al trabajo durante el diseño, la implementación, la evaluación y el aprendizaje.",
     acronymTitle: "La base de WEAVE",
     practiceTitle: "Cómo lo llevamos a la práctica",
     closing:
