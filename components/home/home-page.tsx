@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Icon } from "@/components/ui/icon";
@@ -172,26 +173,54 @@ export function HomePage() {
                 {t.weave.practiceTitle.toUpperCase()}
               </h3>
             </RevealText>
-            <ol className="grid grid-cols-1 gap-x-8 sm:grid-cols-2 lg:grid-cols-3">
-              {t.weaveSteps.map((step, index) => (
-                <li key={step.step} className="border-t border-white/15">
-                  <Reveal
-                    delay={index * 60}
-                    className="flex h-full items-baseline gap-4 py-4 md:py-6"
-                  >
-                    <span
-                      className="text-rise w-10 shrink-0 font-[family-name:var(--font-fraunces)] text-xl font-semibold leading-7 text-[var(--color-text-accent-on-dark)]"
-                      aria-hidden
+            {/* From lg this band is five columns wide, like the acronym
+                above, and switches to the same cell as well: number over
+                title, centred. The steps keep their three-across pairing in
+                the first three columns — spanning three of five at the same
+                gap divides to exactly the acronym's column width — and the
+                mark is centred across the remaining two. Stacking is what makes the narrower
+                column work: beside the title a 40px number left about 100px
+                of measure, and "Co-design & Build to Sustain" broke over four
+                lines. Below lg the number goes back beside the title, which
+                reads better than a centred stack in one narrow column. */}
+            <div className="grid grid-cols-1 gap-x-6 lg:grid-cols-5 xl:gap-x-8">
+              <ol className="grid grid-cols-1 gap-x-6 sm:grid-cols-2 lg:col-span-3 lg:grid-cols-3 xl:gap-x-8">
+                {t.weaveSteps.map((step, index) => (
+                  <li key={step.step} className="border-t border-white/15">
+                    <Reveal
+                      delay={index * 60}
+                      className="flex h-full items-baseline gap-4 py-4 md:py-6 lg:flex-col lg:items-center lg:gap-2 lg:text-center"
                     >
-                      {step.step}
-                    </span>
-                    <span className="text-emphasis text-balance font-[family-name:var(--font-fraunces)] text-xl font-semibold leading-7 text-[var(--navy-100)] md:text-[22px] md:leading-8">
-                      {step.title}
-                    </span>
-                  </Reveal>
-                </li>
-              ))}
-            </ol>
+                      <span
+                        className="text-rise w-10 shrink-0 font-[family-name:var(--font-fraunces)] text-xl font-semibold leading-7 text-[var(--color-text-accent-on-dark)] lg:w-auto"
+                        aria-hidden
+                      >
+                        {step.step}
+                      </span>
+                      <span className="text-emphasis text-balance font-[family-name:var(--font-fraunces)] text-xl font-semibold leading-7 text-[var(--navy-100)] md:text-[22px] md:leading-8">
+                        {step.title}
+                      </span>
+                    </Reveal>
+                  </li>
+                ))}
+              </ol>
+
+              {/* Decorative — the name is already the section's heading, and
+                  an alt here would only repeat it to a screen reader. */}
+              <Reveal
+                delay={360}
+                className="flex items-center justify-center pt-10 lg:col-span-2 lg:col-start-4 lg:pt-0"
+              >
+                <Image
+                  src="/images/logo-mark-white.svg"
+                  alt=""
+                  width={120}
+                  height={124}
+                  unoptimized
+                  className="h-auto w-[88px] xl:w-[104px]"
+                />
+              </Reveal>
+            </div>
           </div>
 
           <RevealText className="max-w-3xl border-t border-white/15 pt-8">
