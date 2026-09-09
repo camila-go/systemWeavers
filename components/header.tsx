@@ -116,7 +116,11 @@ function LogoLink({ large = false }: { large?: boolean }) {
         // Displays ~115-180px wide; without this Next would ship the 1920px
         // variant for a logo that never renders larger than a thumbnail.
         sizes="180px"
-        className={`w-auto ${large ? "h-12 xl:h-14" : "h-9"}`}
+        // object-contain and the shorter tablet height both exist because the
+        // link shrinks: all-caps labels are wider than the sentence-case ones
+        // they replaced, and a squeezed w-auto image stretches the lockup
+        // instead of scaling it.
+        className={`w-auto object-contain ${large ? "h-10 lg:h-12 xl:h-14" : "h-9"}`}
       />
     </Link>
   );
@@ -136,13 +140,13 @@ function PrimaryNavLinks({
     <>
       <Link
         href={localePath(locale, "/#what-we-do")}
-        className="nav-link whitespace-nowrap text-base font-bold text-[var(--color-text-primary)]"
+        className="nav-link whitespace-nowrap text-sm uppercase tracking-[0.04em] lg:text-base font-bold text-[var(--color-text-primary)]"
       >
         {t.nav.whatWeDo}
       </Link>
       <Link
         href={localePath(locale, "/about")}
-        className={`nav-link whitespace-nowrap text-base text-[var(--color-text-primary)] ${
+        className={`nav-link whitespace-nowrap text-sm uppercase tracking-[0.04em] lg:text-base text-[var(--color-text-primary)] ${
           aboutActive ? "nav-link-active font-bold" : "font-medium"
         }`}
       >
@@ -150,7 +154,7 @@ function PrimaryNavLinks({
       </Link>
       <Link
         href={localePath(locale, "/about/values")}
-        className={`nav-link whitespace-nowrap text-base text-[var(--color-text-primary)] ${
+        className={`nav-link whitespace-nowrap text-sm uppercase tracking-[0.04em] lg:text-base text-[var(--color-text-primary)] ${
           valuesActive ? "nav-link-active font-bold" : "font-medium"
         }`}
       >
@@ -206,7 +210,7 @@ export function Header() {
   const closeMenu = () => setMenuOpen(false);
 
   const mobileLinkClass = (active: boolean) =>
-    `nav-link text-base text-[var(--color-text-primary)] ${
+    `nav-link text-base uppercase tracking-[0.04em] text-[var(--color-text-primary)] ${
       active ? "nav-link-active font-bold" : "font-medium"
     }`;
 
@@ -282,8 +286,8 @@ export function Header() {
             forced the button's label onto two lines. */}
         <div className="hidden items-center justify-between gap-4 md:flex">
           <LogoLink large />
-          <div className="flex items-center gap-4 lg:gap-9">
-            <nav className="flex items-center gap-5 lg:gap-9" aria-label="Primary">
+          <div className="flex items-center gap-3 lg:gap-9">
+            <nav className="flex items-center gap-4 lg:gap-9" aria-label="Primary">
               <PrimaryNavLinks aboutActive={aboutActive} valuesActive={valuesActive} />
             </nav>
             <LanguageToggle />
