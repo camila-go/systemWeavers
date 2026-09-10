@@ -21,7 +21,7 @@ export function Faq() {
           read as one component across the site. */}
       <div className="mx-auto flex w-full max-w-[1440px] flex-col gap-6">
         <RevealText>
-          <h2 className="font-[family-name:var(--font-fraunces)] text-[28px] font-semibold leading-9 text-[var(--color-text-primary)] md:text-[34px] md:leading-[44px]">
+          <h2 className="text-center font-[family-name:var(--font-fraunces)] text-[28px] font-semibold leading-9 text-[var(--color-text-primary)] md:text-[34px] md:leading-[44px]">
             {t.faq.title}
           </h2>
         </RevealText>
