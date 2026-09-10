@@ -17,7 +17,9 @@ export function Faq() {
       id="faq"
       className="scroll-mt-24 bg-white px-6 py-12 md:px-10 md:py-16 xl:px-20 xl:py-20 2xl:px-[240px]"
     >
-      <div className="mx-auto flex w-full max-w-3xl flex-col gap-6">
+      {/* Same measure as the About services accordion, so the two lists
+          read as one component across the site. */}
+      <div className="mx-auto flex w-full max-w-[1440px] flex-col gap-6">
         <RevealText>
           <h2 className="font-[family-name:var(--font-fraunces)] text-[28px] font-semibold leading-9 text-[var(--color-text-primary)] md:text-[34px] md:leading-[44px]">
             {t.faq.title}
@@ -58,7 +60,10 @@ export function Faq() {
                   />
                 </summary>
 
-                <p className="accordion-panel pb-5 text-base leading-[26px] text-[var(--color-text-muted)]">
+                {/* The row is full width, the answer is not: these are
+                    paragraphs, not the short bullets the services panels
+                    hold, and a 1440px line is not a readable one. */}
+                <p className="accordion-panel max-w-4xl pb-5 text-base leading-[26px] text-[var(--color-text-muted)]">
                   {item.answer}
                 </p>
               </details>
