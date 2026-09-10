@@ -223,13 +223,18 @@ export function HomePage() {
                 delay={360}
                 className="flex items-center justify-center pt-10 lg:col-span-2 lg:col-start-4 lg:row-start-1 lg:pt-0"
               >
+                {/* Cropped from the 900px lockup rather than the Figma SVG,
+                    which wrapped a 120px raster of the same artwork and shipped
+                    the wordmark with it. 281px of ink is the ceiling the master
+                    file gives us, so the wide sizes stop short of the column
+                    pair they sit in. */}
                 <Image
-                  src="/images/logo-mark-white.svg"
+                  src="/images/logo-mark-white.png"
                   alt=""
-                  width={120}
-                  height={124}
-                  unoptimized
-                  className="h-auto w-[88px] xl:w-[104px]"
+                  width={281}
+                  height={291}
+                  sizes="(max-width: 1023px) 88px, (max-width: 1279px) 180px, 240px"
+                  className="h-auto w-[88px] lg:w-[180px] xl:w-[240px]"
                 />
               </Reveal>
             </div>
