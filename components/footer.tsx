@@ -6,9 +6,11 @@ import { useContent, useLocale } from "@/lib/i18n";
 import { localePath } from "@/lib/i18n/config";
 
 /**
- * White brand lockup for the dark footer, linked home. The artwork carries the
- * wordmark and "Collaborative Consulting", so that line is no longer repeated
- * as text beneath it.
+ * Brand lockup for the dark footer, linked home. This is the on-dark artwork —
+ * the mark in full colour against a white wordmark — rather than the flat white
+ * version, which is kept in the asset library for single-colour placements. It
+ * carries the wordmark and "Collaborative Consulting", so neither line is
+ * repeated as text beneath it.
  */
 function FooterLogo({ large = false }: { large?: boolean }) {
   const { locale } = useLocale();
@@ -20,10 +22,10 @@ function FooterLogo({ large = false }: { large?: boolean }) {
       className="inline-block transition-opacity duration-200 hover:opacity-80"
     >
       <Image
-        src="/images/logo-white.png"
+        src="/images/logo-on-dark.png"
         alt={t.nav.homeLink}
-        width={900}
-        height={291}
+        width={1200}
+        height={382}
         sizes="250px"
         className={`w-auto ${large ? "h-20" : "h-16"}`}
       />
